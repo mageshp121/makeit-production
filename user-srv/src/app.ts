@@ -1,23 +1,17 @@
-
 import express from "express";
-require ('express-async-errors')
+require("express-async-errors");
 import depentencies from "./config/depentencies";
-import { routes } from './routes';
+import { routes } from "./routes";
 import { sanitizeData } from "./libs/utils/sanitize/sanitize";
-import { errorHandler,NotFoundError } from "@makeitcmn/comon";
-
+import { errorHandler, NotFoundError } from "@makeitcmn/comon";
 import bodyParser from "body-parser";
 import helmet from "helmet";
-import mongosanitizer from "express-mongo-sanitize"
-import cors from 'cors';
-import env from 'dotenv';
+import mongosanitizer from "express-mongo-sanitize";
+import cors from "cors";
+import env from "dotenv";
 import cookieParser from "cookie-parser";
 
-
-
-
-env.config()
-
+env.config();
 const app = express();
 const router = express.Router();
 app.use(express.json({ limit: "1000mb" }));
@@ -44,16 +38,11 @@ app.use(
   })
 );
 
+app.use("/api", routes(depentencies));
 
-
-app.use('/api', routes(depentencies));
-
-
-app.all('*', async (req, res) => {
-      throw new NotFoundError();
-})
+app.all("*", async (req, res) => {
+  throw new NotFoundError();
+});
 app.use(errorHandler);
 
-
-export { app }
-
+export { app };
