@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: user-container
-        image: magesh1213/makeituser:latest
+        image: makeit404/user
 ---
 apiVersion: v1
 kind: Service

@@ -1,0 +1,16 @@
+@tailwind base;
+*::-webkit-scrollbar {
+    display: none;
+}
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+    .max-h-between {
+      max-height: calc(100vh - 105px);
+    }
+  }
+@layer base {
+   h1, h2{
+    font-family: 'Josefin Sans', sans-serif;
+   }
+}
