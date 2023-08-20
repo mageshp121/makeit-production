@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: purchase-container
-        image: magesh1213/makeitpurchase:latest
+        image: makeit404/purchase
 ---
 apiVersion: v1
 kind: Service
