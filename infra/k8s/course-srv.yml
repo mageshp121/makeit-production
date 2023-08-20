@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: course-container
-        image: makeit404/course
+        image: makeit404/makeitcourse
 ---
 apiVersion: v1
 kind: Service
