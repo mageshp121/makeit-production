@@ -23,6 +23,10 @@ export default (dependencies:any)=>{
     router.get("/users/:id",getUserById);
     router.get("/user/email",getUserByEmail);
     router.get('/refresh',createRefreshController);
+
+
+
+    
     // Post Methods
     router.post('/login',loginController);
     router.post('/register',RegistrationDataValidation,validateRequest,RegisterUser);
