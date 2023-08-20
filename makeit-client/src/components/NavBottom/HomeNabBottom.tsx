@@ -11,9 +11,9 @@ function HomeNabBottom() {
           </div>
           <div className="h-[rem] p-8   mt-20 flex-auto">
             <div className=" h-[40%] mt-6 text-start  justify-start w-[100%]">
-              {/* <h1 className="text-6xl mb-5  font-extrabold  text-white">
+              <h1 className="text-6xl mb-5  font-extrabold  text-white">
                 Improve Your Online
-              </h1> */}
+              </h1>
               <h1 className="text-6xl mb-4 font-extrabold text-white">
                 Learning Experience
               </h1>
