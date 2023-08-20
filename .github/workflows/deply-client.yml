@@ -3,7 +3,10 @@ name: deploy-client
 on:
   push:
     branches: 
-      - main
+      - main 
+  pull_request: 
+    branches: 
+      - main       
     paths:
       - 'makeit-client/**'
 
