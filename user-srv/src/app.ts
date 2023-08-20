@@ -44,6 +44,7 @@ app.use(
   })
 );
 
+
 app.use("/api", routes(depentencies));
 
 app.all("*", async (req, res) => {
