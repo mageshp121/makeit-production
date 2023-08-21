@@ -32,14 +32,13 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: "http:client-srv:5173",
+    origin: "https:client-srv:5173",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
 );
 
 app.use("/api", routes(depentencies));
-
 app.all("*", async (req, res) => {
   throw new NotFoundError();
 });

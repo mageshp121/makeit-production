@@ -7,6 +7,10 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "2000m"
 spec:
+  tls:
+  - hosts:
+    - www.itmake.world
+    secretName: example-app-tls
   rules:
     - host: www.itmake.world
       http:

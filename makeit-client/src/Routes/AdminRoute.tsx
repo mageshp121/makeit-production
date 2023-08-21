@@ -22,6 +22,7 @@ function AdminRoute() {
     <Route   index element={<UserTutorCount/>}/>
     <Route   path='users' element={<UserTutorCount/>}/>
     <Route path='category' element={<Category/>} />
+    
     <Route path='addcategory' element={<CartPage/>} />
     </Route>
  </Routes>

@@ -22,8 +22,8 @@ const start  = async() =>{
     }catch(err){
     console.error(err);
     }
-console.log(process.env.JWT_access_Key,'jwt');
-console.log(process.env.JWT_Refresh__Key,'jwt');
+console.log(process.env.ACCESS_JWT_SECRETEKEY,'jwt');
+console.log(process.env.REFRESH_JWT_SECRETEKEY,'jwt');
  app.listen(5000,()=>{
     
  console.log("server started at 5000");
