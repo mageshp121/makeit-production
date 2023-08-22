@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Tutordetails from "./Tutordetails";
 import { getAllCourses } from "../../utils/api/methods/get";
-import Shimmer from "../common/Shimmer";
+import Shimmer from "../Commoncomponents/Shimmer";
 import { useSelector } from "react-redux";
 import { usersProp } from "../../utils/types/types";
 import { Cart_Api } from "../../utils/api/endPoints/commen";

@@ -11,7 +11,6 @@ const CartPage = ()  =>{
         return store.user.userData
     });
    
-    
   return (
    <>
    <div className='flex flex-col'>

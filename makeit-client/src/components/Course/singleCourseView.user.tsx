@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // import SingleCourseHome from './SingleCourseHome'
 import { getAllCourses } from "../../utils/api/methods/get";
-import Shimmer from "../common/Shimmer";
+import Shimmer from "../Commoncomponents/Shimmer";
 // import { useAddTocart } from "../../utils/customHooks/hook";
 import { useSelector } from "react-redux";
 import { usersProp } from "../../utils/types/types";

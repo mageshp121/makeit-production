@@ -15,7 +15,7 @@ import DraftedCourse from "../components/Course/Draftedcourse";
 import CourseBasicUpdate from "../components/Forms/Tutor/CourseBasicUpdate";
 import UpdateLesson from "../components/Forms/Tutor/UpdateLessonForm";
 import Lessoneupdate from "../components/Course/Lessoneupdate";
-import ProfileUpdate from "../components/Forms/Common/ProfileUpdate";
+import ProfileUpdate from "../components/Forms/CommonForm/ProfileUpdate";
 
 function TutorRouter() {
   return (

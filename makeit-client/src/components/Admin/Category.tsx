@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useCategoryValidate } from "../../utils/formvalidations/Common/category";
+import { useCategoryValidate } from "../../utils/formvalidations/CommonCode/category";
 import { CategoryFn } from "../../utils/api/methods/post";
 import { UseCommen, UseCommenError } from "../../utils/toastify/toasty";
 import { fetchAllCategory } from "../../utils/api/methods/get";

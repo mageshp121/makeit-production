@@ -1,5 +1,5 @@
 import { RecaptchaVerifier } from "firebase/auth";
-import { RegisterFormData } from "../formvalidations/Common/register";
+import { RegisterFormData } from "../formvalidations/CommonCode/register";
 import { FieldErrors } from "react-hook-form";
 
 export type Otpfomevalue = {

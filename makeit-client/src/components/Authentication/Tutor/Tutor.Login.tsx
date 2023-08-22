@@ -3,7 +3,7 @@ import { LoginFn } from "../../../utils/api/methods/post";
 import {
   useValidate,
   LoginFormData,
-} from "../../../utils/formvalidations/Common/login";
+} from "../../../utils/formvalidations/CommonCode/login";
 import FormEror from "../../ErrorComponents/FormEror";
 import { useState } from "react";
 import { ErrorComponent } from "../../ErrorComponents/ErrorComponent";

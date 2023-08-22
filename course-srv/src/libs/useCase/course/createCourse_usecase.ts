@@ -8,7 +8,7 @@ import { CourseCreatedPublisher } from "../../../events/publishers/course-create
 import { natsWrapper } from "../../../nats-wrapper";
 dotenv.config();
 
-/**
+/*
  *
  *
  *
@@ -19,8 +19,6 @@ dotenv.config();
  *
  *
  */
-
-// const bucketName = process.env.BUCKET_NAME as
 
 export const createCourse_useCase = async (dependencies: any) => {
   const {
@@ -43,7 +41,7 @@ export const createCourse_useCase = async (dependencies: any) => {
     };
     const command = new PutObjectCommand(params);
     await s3.send(command);
-    // creating a new course enitty
+    // creating a new course entity
     let cours: object = new course({
       ...data.body,
       drafted: true,
@@ -68,10 +66,9 @@ export const createCourse_useCase = async (dependencies: any) => {
       CoursePrice: courseRes.CoursePrice,
       drafted: courseRes.drafted,
     });
-    console.log(courseRes, "course response afte adding into database");
     return courseRes;
   };
   return {
-    exicutefunction,
+    exicutefunction
   };
 };
