@@ -36,6 +36,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 app.use(
   cors({
     origin: "http:client-srv:5173",
