@@ -7,7 +7,7 @@ export default ()=>{
         baseURL:BASE_URL,
         withCredentials:true
     })
-}
+};
 export const axiosPrivet = axios.create({
         baseURL:BASE_URL,
         headers: {'Content-Type' : 'application/json'},
