@@ -15,43 +15,43 @@ spec:
             backend:
               service:
                 name: user-srv
-                 port:
-                   number: 3000
+                port:
+                  number: 3000
           - path: /api/course/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: course-srv
-                 port:
-                   number: 4000
+                port:
+                  number: 4000
           - path: /api/purchase/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: purchase-srv
-                 port:
-                   number: 5000        
+                port:
+                  number: 5000        
           - path: /api/payment/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: purchase-srv
-                 port:
-                   number: 5000  
+                port:
+                  number: 5000  
           - path: /api/history/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: purchase-srv
-                 port:
+                port:
                    number: 5000  
           - path: /?(.*)
             pathType: Prefix
             backend:
               service:
                 name: client-srv
-                 port:
-                   number: 5173
+                port:
+                  number: 5173
   
 
 ---
