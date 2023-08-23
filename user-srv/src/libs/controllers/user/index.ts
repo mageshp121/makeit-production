@@ -6,6 +6,7 @@ import logoutController from "./logout_Controler";
 import getUserByEmailController from "./getUserByEmailController";
 import createRefreshController from "./createRefreshController";
 import updateUserControler from "./updateUserControler";
+import adminAuthControler from "./adminAuthControler";
 
 
 export default (dependencies: any) => {
@@ -18,5 +19,6 @@ export default (dependencies: any) => {
     getUserByEmail:getUserByEmailController(dependencies),
     createRefreshController:createRefreshController(dependencies),
     updateUserUserController:updateUserControler(dependencies),
+    adminAuthController:adminAuthControler(dependencies)
   };
 };

@@ -16,7 +16,7 @@ const secret:any = {
 
 export default (dependencies:any)=>{
     const router =  express.Router();
-    const {getAllUsersController,getUserById,loginController,RegisterUser,logutControler,getUserByEmail,createRefreshController,updateUserUserController} = profileController(dependencies)
+    const {getAllUsersController,getUserById,loginController,RegisterUser,logutControler,getUserByEmail,createRefreshController,updateUserUserController,adminAuthController} = profileController(dependencies)
     // Get Methodes
     router.get("/allusers",getAllUsersController);
     router.get('/logout',logutControler);
@@ -30,6 +30,7 @@ export default (dependencies:any)=>{
     // Post Methods
     router.post('/login',loginController);
     router.post('/register',RegistrationDataValidation,validateRequest,RegisterUser);
+    router.post('/admin/auth',adminAuthController)
     // Put Method
     router.put("/updateprofile",jwtauthentication(secret),upload.single("userimage"),updateUserUserController)
 

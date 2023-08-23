@@ -1,6 +1,6 @@
 
 import axios from "axios";
-const BASE_URL = 'http://www.itmake.world'; 
+const BASE_URL = 'https://www.itmake.world'; 
 
 export default ()=>{
     return axios.create({
@@ -8,6 +8,7 @@ export default ()=>{
         withCredentials:true
     })
 };
+
 export const axiosPrivet = axios.create({
         baseURL:BASE_URL,
         headers: {'Content-Type' : 'application/json'},

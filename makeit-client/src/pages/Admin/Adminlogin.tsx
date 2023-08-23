@@ -1,11 +1,20 @@
 import React from "react";
 import { useValidate } from "../../utils/formvalidations/CommonCode/login";
+import { adminAuth } from "../../utils/api/methods/post";
+import { useNavigate } from "react-router-dom";
+import { UseCommen, UseCommenError } from "../../utils/toastify/toasty";
 
-function Adminlogin() {
+const Adminlogin = () => {
   const { errors, handleSubmit, register } = useValidate();
-
-  const adminLoginFormSubmit = (data: any) => {
-    console.log(data, "adminlogin data");
+  const naviagte = useNavigate()
+  const adminLoginFormSubmit = async (data: any) => {
+    const response:any = await adminAuth(data);
+    if(response.data.authSuccess){
+       naviagte("/super/admin");
+    }else{
+      UseCommenError("sorry invalied credentials")
+    }
+    
   };
 
   return (

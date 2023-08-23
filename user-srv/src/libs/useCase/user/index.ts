@@ -5,6 +5,7 @@ import { loginUser_usecase } from './login_usecase'
 import  { getUserByEmail_useCase } from './getuserByEmail_usecase'
 import { CreateRefresh_usecase } from './createRefresh_usecase';
 import { updateUser_usecase } from './updateUser_usease';
+import { adminAuth_UseCase } from './adminAuth_usecase';
 
 export {  getAllUser_useCase,
           createUser_useCase,
@@ -12,5 +13,6 @@ export {  getAllUser_useCase,
            loginUser_usecase,
            getUserByEmail_useCase,
            CreateRefresh_usecase,
-           updateUser_usecase
+           updateUser_usecase,
+           adminAuth_UseCase
          }

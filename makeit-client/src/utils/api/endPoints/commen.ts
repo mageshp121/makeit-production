@@ -10,6 +10,7 @@ export const getUserByemail = "/api/user/user/email?email="
 export const getRefersh = "/api/user/refresh"
 export const udpdateuser = "/api/user/updateprofile"
 export const getAllusers = "/api/user/allusers"
+export const AdminAuth = "/api/user/admin/auth"
 // course_microservice related api endpoints
 export const Create_Course_Api ="/api/course/courses"
 export const FetchCourseData_With_TutorId = "/api/course/courses/"
