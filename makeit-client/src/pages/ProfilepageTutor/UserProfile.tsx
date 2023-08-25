@@ -12,8 +12,8 @@ function UserProfile() {
        })
   return (
     <>
-  <div className='h-[150rem]'>
-     <NavSmall users={userdata}/>
+  <div className='h-[73rem]'>
+     <NavSmall />
      <Navbottom Title={"Profile"} subTitle={'explore your profile'}/>
      <div className='flex mt-8  ml-12'>
     <ProfileSection  users={userdata} />

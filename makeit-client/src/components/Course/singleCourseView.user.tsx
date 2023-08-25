@@ -7,7 +7,7 @@ import Shimmer from "../Commoncomponents/Shimmer";
 import { useSelector } from "react-redux";
 import { usersProp } from "../../utils/types/types";
 import { useAxiosePrivate } from "../../utils/customHooks/hook";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Cart_Api } from "../../utils/api/endPoints/commen";
 import { UseCommen, UseCommenError } from "../../utils/toastify/toasty";
 
@@ -300,7 +300,7 @@ const handleNext = () =>{
           </button>
         ) : null}
       </div>
-      <div className="w-[100%]  overflow-auto  mt-2 h-[69rem] ">
+      <div className="w-[100%]   overflow-auto  mt-2 h-[69rem] ">
         <div className="mx-auto  max-w-7xl px-6 lg:px-8">
           <div className="w-[100%]  ">
             <div className="mt-4  ">
@@ -311,12 +311,15 @@ const handleNext = () =>{
                 ) :paginatedCourses?.length > 0 ? (
                   paginatedCourses?.map((course: any, key: any) => (
                     <>
-                      <div className="p-2 h-[25rem] " key={key}>
+                    
+                      <div   className=" h-[28rem] ml-3 rounded-lg p-5 shadow-lg  shadow-gray-300 border-gray-300 border" key={key}>
+                      <Link to={`/singleall/${course._id}`}>
                         <img
                           src={`${course.thumbNailImageS3UrlKey}`}
                           alt=""
-                          className="h-[50px] rounded-lg w-full object-cover sm:h-[200px]"
+                          className="h-[50px] shadow-lg rounded-lg w-full object-cover sm:h-[200px]"
                         />
+                        </Link>
                         <div className="mt-3 flex justify-between text-sm">
                           <div>
                             <div className="mt-2">
@@ -329,7 +332,7 @@ const handleNext = () =>{
                                 {course.ShortDescription}
                               </p>
                               <div className="mt-3">
-                                <p className="text-teal-600 text-lg">
+                                <p className="text-teal-600 text-xl font-medium">
                                   ₹ {course.CoursePrice}
                                 </p>
                               </div>
@@ -346,32 +349,17 @@ const handleNext = () =>{
                               Add to Cart 
                             </button>
                           </div>
-                          <div className="w-[20%] h-13 ml-9 mt-5 pt-3 rounded-lg  border shadow-md border-gray-400">
-                            <div className=" ml-2">
-                              <img
-                                className="w-[80%] m"
-                                src="shopping-bag.png"
-                                alt="cart-image"
-                              />
-                            </div>
-                          </div>
+                          
                         </div>
                       </div>
                     </>
                   ))
                 ) : (
-
-
                   <div className="w-full ml-[26rem] text-center">
                     <h1 className="text-4xl">No data found</h1>
                   </div>
-
-
-                  
                 )}
                 {/* card ends */}
-
-                
               </div>
               {/* paginatio bar starts */}
               <div className="w-[75rem] mt-14 ml-3 rounded-lg  mr-16 h-20">

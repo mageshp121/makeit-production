@@ -1,5 +1,7 @@
-import mongoose, { Types } from "mongoose";
+import mongoose, { Collection, Types } from "mongoose";
 import Schema from "../dataBase/index";
+import { order } from "../../enitities/orderEntity";
+import { coursecopy } from "../dataBase/Schema/course.schema";
 
 export default {
   createOrdrHistoryTrasaction: async (OrderData: any, tutorOrderData: any) => {
@@ -100,4 +102,78 @@ export default {
       return error;
     }
   },
+
+
+//   getOrderedProducts: (orId) => {
+    //     return new Promise(async (resolve, reject) => {
+    //         OrderdProducts = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+    //             {
+    //                 $match: { _id: ObjectID(orId) }
+    //             },
+    //             {
+    //                 $unwind: '$products'
+    //             },
+    //             {
+    //                 $project: {
+    //                     item: '$products.item',
+    //                     quantity: '$products.quantity'
+    //                 }
+    //             },
+    //             {
+    //                 $lookup: {
+    //                     from: collection.PRODUCT_COLLECTION,
+    //                     localField: 'item',
+    //                     foreignField: '_id',
+    //                     as: 'orderpr'
+    //                 }
+    //             },
+    //             {
+    //                 $project: {
+    //                     item: 1, quantity: 1, orderpr: { $arrayElemAt: ['$orderpr', 0] }
+    //                 }
+    //             }
+    //         ]).toArray()
+    //         resolve(OrderdProducts)
+    //     })
+    // },
+
+
+
+
+     getpurchasedCourse : async (orderId:any) => {
+      console.log(orderId);
+      
+      try {
+        const order:any = await Schema.order.findOne({ orderId: orderId });
+        console.log(order);
+        
+        if (!order) {
+          return null; // Handle the case when no order is found
+        }
+        const populatedOrder:any= await order.populate({
+            path: 'courseDetails.courseId', // Reference field path
+            model: 'coursecopy', // Reference model name
+          });
+        console.log(populatedOrder,'llkk');
+        // Extract the populated courseDetails array from the populatedOrder
+        const populatedCourseDetails = populatedOrder.courseDetails;
+        return populatedCourseDetails;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
 };

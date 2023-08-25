@@ -1,4 +1,4 @@
-import { string } from "joi";
+import { boolean, string } from "joi";
 import mongoose from "mongoose";
 
 const usrSchema = new mongoose.Schema({
@@ -10,7 +10,8 @@ const usrSchema = new mongoose.Schema({
     roll:String,
     otpVerify:Boolean,
     profileImage:String,
-    s3ImageUrl:String
+    s3ImageUrl:String,
+    isBlock:Boolean
 },{
     versionKey:false
 })

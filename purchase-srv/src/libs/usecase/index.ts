@@ -2,6 +2,7 @@ import { Cart_usecase,removeProductFromCart_usecase,getCartItems } from "./cart"
 import { checkout_Usecase,verifyPayment_usecase } from "./payment";
 import {   getPurhcaseHistoryByUserId_useCase,getPurhcaseHistoryByTutor_useCase } from "./purchase"
 import { getPurchasedcourses_useCase } from "./course";
+import { getPurchasedCoursebyOrderId_useCase } from "./purchase";
 export {
     Cart_usecase,
     removeProductFromCart_usecase,
@@ -10,5 +11,6 @@ export {
     verifyPayment_usecase,
     getPurhcaseHistoryByUserId_useCase,
     getPurhcaseHistoryByTutor_useCase,
-    getPurchasedcourses_useCase
+    getPurchasedcourses_useCase,
+    getPurchasedCoursebyOrderId_useCase
 }

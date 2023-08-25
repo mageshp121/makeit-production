@@ -32,12 +32,12 @@ function UserTutorCount() {
             </h3>
             <div className="block w-[50rem] overflow-x-auto">
               <table className="items-center w-[50rem] bg-transparent border-collapse">
-                <thead>
-                  <tr>
-                    <th className="px-4 bg-gray-50 w-[50rem] text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                <thead className="bg-gray-90000">
+                  <tr className="bg-gray-600">
+                    <th className="px-4 bg-gray-300 w-[50rem] text-gray-600 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
                       Users
                     </th>
-                    <th className="px-4  bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                    <th className="px-4  bg-gray-300 text-gray-600 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
                       Count
                     </th>
                     <th className="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px" />
@@ -70,7 +70,6 @@ function UserTutorCount() {
                       {courseCount}
                     </td>
                     <td className="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4"></td>
-
                     <td className="border-t-0 align-middle text-xs whitespace-nowrap p-4 pb-0"></td>
                   </tr>
                 </tbody>
@@ -79,7 +78,7 @@ function UserTutorCount() {
           </div>
         </div>
       </div>
-      <UsersList users={user} />
+      <UsersList />
     </div>
   );
 }

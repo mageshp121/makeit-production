@@ -9,7 +9,7 @@ function Admin() {
         {/* component */}
         {/* This is an example component */}
         <div>
-          <nav className="bg-white border-b border-gray-200 fixed z-30 w-full">
+          <nav className="bg-white border-b shadow-lg border-gray-200 fixed z-30 w-full">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center justify-start">
@@ -79,22 +79,22 @@ function Admin() {
                   <div className="flex items-center mr-5 space-x-4">
                     <img
                       className="w-10 h-10 rounded-full"
-                      src="/docs/images/people/profile-picture-5.jpg"
+                      src="/images (2).jpeg"
                       alt=""
                     />
                     <div className="font-medium dark:text-white">
-                      <div>Jese Leos</div>
+                      <div>SuperAdmin</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </nav>
-          <div className="flex overflow-hidden bg-white pt-16">
+          <div className="flex  overflow-hidden bg-white pt-16">
             <AdminSideBar/>
             <div
               id="main-content"
-              className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+              className="h-screen w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
             >
               <main>
                 <Outlet/>

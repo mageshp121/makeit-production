@@ -1,11 +1,32 @@
 import { Link } from "react-router-dom";
 import { usersProp } from "../../utils/types/types";
 import mixpanel from "mixpanel-browser";
+import { useLogout } from "../../utils/customHooks/hook";
+import { useEffect, useState } from "react";
+import { set } from "animejs";
+import { useSelector } from "react-redux";
 
-function Navbar({users}:{users:usersProp}) {
+function Navbar() {
+  const logout = useLogout();
+  const [log,setLog]=useState(false);
+  const users:usersProp = useSelector((store:any)=>{
+    return store.user.userData
+   })
+
+  useEffect(()=>{
+
+  },[log])
   const catchEvent=()=>{
     mixpanel.track("Clicked course Search")
+  };
+  const handleLoguot=()=>{
+        setLog(true);
+        logout();
+
   }
+ 
+
+
   return (
     <>
     <nav className="bg-white p-0  fixed  right-0 left-0  shadow-xl border-gray-200  dark:bg-gray-900">
@@ -29,6 +50,7 @@ function Navbar({users}:{users:usersProp}) {
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
+
                 <path
                   fillRule="evenodd"
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -66,12 +88,12 @@ function Navbar({users}:{users:usersProp}) {
                   aria-labelledby="hs-dropdown-with-dividers"
                 >
                   <div className="py-2 first:pt-0 last:pb-0">
-                    <a
+                  <Link to={'/profile'}
                       className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                      href="#"
+                     
                     >
                      My Learnings
-                    </a>
+                     </Link>
                   </div>
                  
                   <div className="py-2 first:pt-0 last:pb-0">
@@ -81,12 +103,12 @@ function Navbar({users}:{users:usersProp}) {
                     >
                       Account 
                     </Link>
-                    <a
+                    <div
                       className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                      href="#"
+                      onClick={handleLoguot}
                     >
                       Sign out
-                    </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,12 +168,12 @@ function Navbar({users}:{users:usersProp}) {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link 
+                to={"/single"}
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Courses
-                </a>
+                </Link>
               </li>
               <li> 
                 <Link to={'/tutor'}> <span className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"> Become An instructor</span></Link>

@@ -15,7 +15,7 @@ const CartPage = ()  =>{
    <>
    <div className='flex flex-col'>
        <div className='bg-blue-50 h-7'>
-       <Navbar users={userdata}/>
+       <Navbar />
        </div>
        <div className=''>
        <Navbottom />

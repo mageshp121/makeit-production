@@ -26,13 +26,15 @@ export default {
     return categoryRes;
   },
   deleteCategory: async (categoryName: string) => {
+    console.log("deletcategory",categoryName);
+    
     const categoryRes = await category.deleteOne({
-      category: categoryName.toString(),
+      category:categoryName.toString(),
     });
     return categoryRes;
   },
   getCategoryByName: async (categoryName: string) => {
-    const categoryRes = await category.findOne({ category: categoryName });
+    const categoryRes = await category.findOne({ category:categoryName });
     return categoryRes;
   },
 };

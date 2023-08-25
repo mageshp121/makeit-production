@@ -7,6 +7,8 @@ import getUserByEmailController from "./getUserByEmailController";
 import createRefreshController from "./createRefreshController";
 import updateUserControler from "./updateUserControler";
 import adminAuthControler from "./adminAuthControler";
+import blockUsercontroelr from './adninUserBlockControler'
+import unBlockUser from './adminUnblockUser'
 
 
 export default (dependencies: any) => {
@@ -19,6 +21,8 @@ export default (dependencies: any) => {
     getUserByEmail:getUserByEmailController(dependencies),
     createRefreshController:createRefreshController(dependencies),
     updateUserUserController:updateUserControler(dependencies),
-    adminAuthController:adminAuthControler(dependencies)
+    adminAuthController:adminAuthControler(dependencies),
+    adminBlockUser:blockUsercontroelr(dependencies),
+    adminUnblockUser:unBlockUser(dependencies)
   };
 };

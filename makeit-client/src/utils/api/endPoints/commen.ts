@@ -11,6 +11,8 @@ export const getRefersh = "/api/user/refresh"
 export const udpdateuser = "/api/user/updateprofile"
 export const getAllusers = "/api/user/allusers"
 export const AdminAuth = "/api/user/admin/auth"
+export const BlockUser = '/api/user/admin/user/block/'
+export const UnblockUser = "/api/user/admin/user/unBlock/"
 // course_microservice related api endpoints
 export const Create_Course_Api ="/api/course/courses"
 export const FetchCourseData_With_TutorId = "/api/course/courses/"

@@ -8,7 +8,6 @@ export default (dependencies: any) => {
     try {
       const useData = await getAllUser_useCase(dependencies).executefunction();
       if (!useData) res.json({ staus: false });
-
          res.status(200).send(useData);
     } catch (error: any) {
       throw new BadRequestError("Something went wrong");

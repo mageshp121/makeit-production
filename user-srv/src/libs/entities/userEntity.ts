@@ -8,6 +8,7 @@ export interface userData {
     isOtPVerified:boolean
     profileImage:string | null
     s3ImageUrl:string | null
+    isBlock:boolean
 }
 
 export class userProfile{
@@ -20,7 +21,8 @@ export class userProfile{
     isOtPVerified:boolean
     profileImage:string | null
     s3ImageUrl:string | null
-    constructor({firstName,lastName,email,phone,password,roll,isOtPVerified,profileImage,s3ImageUrl}:userData){
+    isBlock:boolean | undefined
+    constructor({firstName,lastName,email,phone,password,roll,isOtPVerified,profileImage,s3ImageUrl,isBlock}:userData){
         this.firstName = firstName
         this.lastName  = lastName,
         this.email = email,
@@ -30,5 +32,6 @@ export class userProfile{
         this.isOtPVerified = isOtPVerified
         this.profileImage = profileImage
         this.s3ImageUrl = s3ImageUrl
+        this.isBlock = isBlock
     }
 }

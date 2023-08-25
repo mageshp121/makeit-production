@@ -8,6 +8,9 @@ export const deleteCatogory_useCase = async (dependencies: any) => {
   const exicutefunction = async (CategoryName: string) => {
     const isCourseExistInthisCategory =
       await courseRepository.getCourseByCategory(CategoryName);
+     console.log(isCourseExistInthisCategory,'category');
+     
+      
     if (isCourseExistInthisCategory.length > 0) {
       return { courseExist: true };
     } else {

@@ -13,9 +13,9 @@ const PaymentPage = () => {
     <>
       <div className='flex flex-col'>
        <div className='bg-blue-50 h-7'>
-       <Navbar users={userdata}/>
+       <Navbar />
        </div>
-       <div className=''>
+       <div className='pt-12'>
        <Navbottom />
        </div>
        <div className='  h-[71rem]'>

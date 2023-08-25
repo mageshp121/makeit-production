@@ -8,10 +8,9 @@ function Navbottom(props:any) {
    
   return (
     <>
-    <div className='pt-16' >
-    <div className='bg-gradient-to-r  text-center z-1  shadow-xl  flex gap-4   from-green-300  to-teal-600 via-teal-400 sm:ws md:w-screen h-72 p-5 ' >
+    <div className='bg-gradient-to-r  text-center z-1  shadow-xl  flex gap-4  overflow-hidden  from-green-300  to-teal-600 via-teal-400 sm:ws md:w-screen h-72 p-5 ' >
       <div className='  py-10 px-20  sm:w-1/3 flex-auto h-60'>
-      <img src="/page-banner-shape-1.svg" alt="cour" />
+      <img className='shape-1 animate-off-on' src="/page-banner-shape-1.svg " alt="cour" />
       </div>
       <div className='flex  ml-12'>
       <div className=' flex-auto mt-10  flex-col justify-center sm:w-1/2 text-center h-60'>
@@ -23,7 +22,6 @@ function Navbottom(props:any) {
           <br />
           {Title != 'Authentication' && (
           <div className='text-center'>
-
         </div>
       )}
           
@@ -34,7 +32,6 @@ function Navbottom(props:any) {
       <div className='  ml-48  flex flex-col justify-end px-24 py-14    flex-auto h-60' >
       <img className='w-32   shape-1 animate-off-on'src="/business-3d-stack-of-different-books.png" alt="cour" />
       </div>
-    </div>
     </div>
     </>
   )

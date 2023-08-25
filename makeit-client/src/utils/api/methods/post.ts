@@ -1,6 +1,7 @@
 
+import { circIn } from "framer-motion";
 import client  from "../baseUrl/axios.baseUrl"
-import { AdminAuth, Category, Login_Api, Register_Api} from "../endPoints/commen";
+import { AdminAuth, BlockUser, Category, Login_Api, Register_Api, UnblockUser} from "../endPoints/commen";
  
 export const RegisterFn= async (data:object)=>{  
       try{
@@ -33,5 +34,21 @@ export const adminAuth =async (data:any)=>{
     return client().post(AdminAuth,data,{headers:{"Content-Type":"application/json"}})
   } catch (error) {
     return error
+  }
+}
+
+export const AdminBlockUser =async(id:any)=>{
+  try {
+    return client().post(BlockUser+id,{headers:{"Content-Type":"application/json"}})
+  } catch (error) {
+    return error
+  }
+}
+
+export const UnBlockUser =async(id:any)=>{
+  try {
+    return client().patch(UnblockUser+id,{headers:{"Content-Type":"application/json"}})
+  } catch (error) {
+    
   }
 }

@@ -23,7 +23,7 @@ function Home() {
   return (
     <>
     <Chat/>
-     <Navbar users={userdata}/>
+     <Navbar />
      <HomeNabBottom/>
      <div className='w-full shadow-2xl flex gap-5 mt-3 h-64 p-5'  >
       <div className="w-[25%] flex-auto ">

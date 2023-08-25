@@ -48,7 +48,7 @@ function Course() {
   }
   return (
     <>
-      <div className="w-[100%] grid h-[54rem] grid-cols-1 gap-5">
+      <div className="w-[100%] grid h-[20rem] grid-cols-1 gap-5">
         {courseData &&
           courseData.map((item: any) => {
             return (

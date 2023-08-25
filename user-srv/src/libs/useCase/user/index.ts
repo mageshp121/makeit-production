@@ -6,6 +6,8 @@ import  { getUserByEmail_useCase } from './getuserByEmail_usecase'
 import { CreateRefresh_usecase } from './createRefresh_usecase';
 import { updateUser_usecase } from './updateUser_usease';
 import { adminAuth_UseCase } from './adminAuth_usecase';
+import { blockUser_useCase } from './adminBlockUser_useCase';
+import { unBlockUser_useCase } from './unBlockUser_useCase';
 
 export {  getAllUser_useCase,
           createUser_useCase,
@@ -14,5 +16,7 @@ export {  getAllUser_useCase,
            getUserByEmail_useCase,
            CreateRefresh_usecase,
            updateUser_usecase,
-           adminAuth_UseCase
+           adminAuth_UseCase,
+           blockUser_useCase,
+           unBlockUser_useCase
          }

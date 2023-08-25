@@ -21,7 +21,8 @@ export default (depentencies: any) => {
     const data ={
           ...req.body,
           profileImage:null,
-          s3ImageUrl:null
+          s3ImageUrl:null,
+          isBlock:null
     }
     try {
       const {useCase: { createUser_useCase },} = depentencies;

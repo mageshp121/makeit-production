@@ -1,4 +1,4 @@
-import { getAllUser_useCase,createUser_useCase,  getUserBy_Id_useCase,loginUser_usecase,getUserByEmail_useCase,CreateRefresh_usecase,updateUser_usecase,adminAuth_UseCase } from "../libs/useCase";
+import { getAllUser_useCase,createUser_useCase,  getUserBy_Id_useCase,loginUser_usecase,getUserByEmail_useCase,CreateRefresh_usecase,updateUser_usecase,adminAuth_UseCase,blockUser_useCase,unBlockUser_useCase } from "../libs/useCase";
 import { userRepository } from '../libs/app/repository/index'
 
 const useCase:any = {
@@ -9,7 +9,9 @@ const useCase:any = {
     getUserByEmail_useCase,
     CreateRefresh_usecase,
     updateUser_usecase,
-    adminAuth_UseCase
+    adminAuth_UseCase,
+    blockUser_useCase,
+    unBlockUser_useCase
 }
 
 

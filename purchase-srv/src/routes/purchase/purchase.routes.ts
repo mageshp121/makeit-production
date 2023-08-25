@@ -14,14 +14,17 @@ export default (dependencies: any) => {
     };
     const router = express.Router();
     // purchase controller
-    const { getpurchseHistoryUser, getpurchaseHistoryTutor } =
+    const { getpurchseHistoryUser, getpurchaseHistoryTutor ,getAllpurchasedCourseByOrderId} =
         purchaseController(dependencies);
     const { getPurchasedcourse_controler } =
         purchaseCourseController(dependencies);
+
+    
 
     // get methods
     router.get("/user/purchase/get/:userid", getpurchseHistoryUser);
     router.get("/tutor/purchase/get/:tutorid", getpurchaseHistoryTutor);
     router.get("/user/purchase/get/course/:id", getPurchasedcourse_controler);
+    router.get('/user/purchasehistory/course/:orderId',getAllpurchasedCourseByOrderId)
     return router;
 };

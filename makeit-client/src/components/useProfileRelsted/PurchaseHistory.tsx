@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 export const PurchaseHistory = () => {
   const [purchaseHistory, setPurchaseHistory] = useState([]) as any;
+  const [currentPage,setCurrentPage] = useState(1);
   const userdata: usersProp = useSelector((store: any) => {
     return store.user.userData;
   });
@@ -23,6 +24,26 @@ export const PurchaseHistory = () => {
     };
     getPurchaseHistory();
   }, []);
+  const dataPerPage = 2
+  const lastindex = dataPerPage*currentPage;
+  const firstIndex = lastindex - dataPerPage;
+  const page = Math.ceil( purchaseHistory.length/ dataPerPage);
+  const paginateddata = purchaseHistory.slice(firstIndex,lastindex);
+  const handlePageChange = (pageNumber:number) =>{
+    setCurrentPage(pageNumber)
+}
+const handlePrev=()=>{
+   if(currentPage != 1){
+       setCurrentPage((prev)=>prev-1)
+   }
+}
+  
+const handleNext = () =>{
+ if(page != currentPage){
+   setCurrentPage((prev)=> prev+1)
+ }
+  
+}
   return (
     <>
       <div className="rounded-md">
@@ -97,9 +118,8 @@ export const PurchaseHistory = () => {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                      {purchaseHistory.map((obj: any) => {
+                      {paginateddata.map((obj: any) => {
                         const status = obj.status; // Replace this with the actual value of obj.status
-
                         const statusDisplay =
                           status === "Pending" ? (
                             <span className="text-red-600">Pending</span>
@@ -149,6 +169,37 @@ export const PurchaseHistory = () => {
                       })}
                     </tbody>
                   </table>
+                </div>
+                <div className="py-1 px-4">
+                <nav className="flex justify-start  items-center rounded-lg  space-x-2">
+                    <span
+                      className="text-gray-500 hover:text-teal-600 p-4 inline-flex items-center gap-2 rounded-md"
+                      onClick={handlePrev}
+                    >
+                      <span aria-hidden="true">«</span>
+                      <span className="sr-only">Previous</span>
+                    </span>
+                    {Array.from({ length: page }, (_, index) => (
+                      <span
+                        key={index + 1}
+                        className={`w-10 h-10 ${
+                          currentPage === index + 1
+                            ? "bg-teal-600 text-white"
+                            : "text-gray-500 hover:text-teal-600"
+                        } p-4 inline-flex items-center text-sm font-medium rounded-full`}
+                        onClick={() => handlePageChange(index + 1)}
+                      >
+                        {index + 1}
+                      </span>
+                    ))}
+                    <span
+                      className="text-gray-500 hover:text-teal-600 p-4 inline-flex items-center gap-2 rounded-md"
+                      onClick={handleNext}
+                    >
+                      <span className="sr-only">Next</span>
+                      <span aria-hidden="true">»</span>
+                    </span>
+                  </nav>
                 </div>
               </div>
             </div>

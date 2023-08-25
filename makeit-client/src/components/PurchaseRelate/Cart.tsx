@@ -157,14 +157,11 @@ const Cart = () => {
                     </div>
 
                     <div className="flex gap-10 mb-4 justify-end mr-12">
-                      <div className="mr-[19rem]">
-                        <p className="text-lg text-teal-600">₹ {data.CoursePrice}</p>
+                      <div className="mr-[25rem]">
+                        <p className="text-xl font-bold text-teal-600">₹ {data.CoursePrice}</p>
                       </div>
-                      <span onClick={()=>handleRemoveFromCart(data._id)} className="text-[10px] text-red-500 underline-offset-2 cursor-pointer underline font-medium sm:text-[13px]">
+                      <span onClick={()=>handleRemoveFromCart(data._id)} className="text-xl  text-red-500 underline-offset-2 cursor-pointer underline font-medium sm:text-[px]">
                         Remove
-                      </span>
-                      <span className="text-[10px]  underline-offset-2 cursor-pointer underline font-medium sm:text-[13px]">
-                        Move to whishList
                       </span>
                     </div>
                   </article>

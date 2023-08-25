@@ -41,17 +41,6 @@ function AdminSideBar() {
                     <span className="ml-3 flex-1 whitespace-nowrap">Users</span>
                   </Link>
                 </li>
-                <li className="ml-3">
-                  <Link
-                    to={"signout"}
-                    className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                  >
-                    <img className="h-8" src="/log-out.png" alt="user icon" />
-                    <span className="ml-3 flex-1 whitespace-nowrap">
-                      Sign out
-                    </span>
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>

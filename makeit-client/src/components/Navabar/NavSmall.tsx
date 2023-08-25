@@ -1,10 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { usersProp } from "../../utils/types/types";
+import { useLogout } from "../../utils/customHooks/hook";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import mixpanel from "mixpanel-browser";
 
-function NavSmall({users}:{users:usersProp}) {
+function NavSmall() {
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate(-1);
+  };
+  const logout = useLogout();
+  const [log, setLog] = useState(false);
+  const users: usersProp = useSelector((store: any) => {
+    return store.user.userData;
+  });
+  useEffect(() => {}, [log]);
+  const handleLoguot = () => {
+    setLog(true);
+    logout();
   };
 
   return (
@@ -18,13 +32,14 @@ function NavSmall({users}:{users:usersProp}) {
             <span aria-hidden="true">←</span> Back
           </span>
         </div>
-        {
-           users?.roll === "tutor" && ( <>
-            <div  className="flex cursor-pointer">
-        <span className="mr-2">Log out</span> <img className="h-6 mr-5" src="/exit.png" alt="Log out png" />
-        </div>
-           </> )
-        }
+        {users?.roll && (
+          <>
+            <div onClick={handleLoguot} className="flex cursor-pointer">
+              <span className="mr-2">Log out</span>{" "}
+              <img className="h-6 mr-5" src="/exit.png" alt="Log out png" />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

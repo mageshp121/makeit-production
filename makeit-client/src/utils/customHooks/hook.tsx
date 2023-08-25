@@ -10,14 +10,13 @@ import { RecaptchaVerifier, UserCredential } from "firebase/auth";
 import { provider } from "../config/firebase";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addtoken } from "../ReduxStore/slices/tokenSlice";
+import { addtoken,cleartoken } from "../ReduxStore/slices/tokenSlice";
+import { clearUser} from "../ReduxStore/slices/userSlice"
 import { axiosPrivet } from "../api/baseUrl/axios.baseUrl";
 import { useEffect } from "react";
 import client from "../api/baseUrl/axios.baseUrl";
 import { Cart_Api, getRefersh } from "../api/endPoints/commen";
 import { useNavigate } from "react-router-dom";
-
-
 
 // This hook joins the object of strings and convertes into number
 export const useConvertString = (data: object) => {
@@ -31,8 +30,8 @@ export const useSendOtp = (
   number: string,
   appVerifier: ApplicationVerifier
 ) => {
-  console.log(typeof(number));
-  console.log(number,'number');
+  console.log(typeof number);
+  console.log(number, "number");
   signInWithPhoneNumber(auth, number, appVerifier)
     .then((confirmationResult) => {
       window.confirmationResult = confirmationResult;
@@ -44,8 +43,6 @@ export const useSendOtp = (
       );
     });
 };
-
-
 
 export const UsegenerateRecaptcha = (auth: Auth) => {
   window.recaptchaVerifier = new RecaptchaVerifier(
@@ -97,7 +94,6 @@ export const useGoogleSignIn = async (auth: Auth): Promise<any> => {
   });
 };
 
-
 // custom hook for getting newaccess token using refresh token
 export const useRefreshToken = () => {
   const dispatch = useDispatch();
@@ -106,26 +102,23 @@ export const useRefreshToken = () => {
   const refreshtoken: any = localStorage.getItem("Token");
   console.log(refreshtoken, '<= localStorage.getItem("Token") =>');
   const refresh = async () => {
-    console.log('caling refers ap[iiiiii');
+    console.log("caling refers ap[iiiiii");
     // calling an api for getting new refersh token
     const headers = {
-      'authorization': `Bearer ${refreshtoken}`,
-      'Content-Type': 'application/json',
-    }
+      authorization: `Bearer ${refreshtoken}`,
+      "Content-Type": "application/json",
+    };
     try {
-    const responase: any = await client().get(getRefersh,{headers});
-    console.log(responase, "<= getRefreshToken(refreshtoken) api =>");
-    dispatch(addtoken(responase.data));
-    return responase.data;
+      const responase: any = await client().get(getRefersh, { headers });
+      console.log(responase, "<= getRefreshToken(refreshtoken) api =>");
+      dispatch(addtoken(responase.data));
+      return responase.data;
     } catch (error) {
-      console.log(error,'errrrrrrrr');
-      
+      console.log(error, "errrrrrrrr");
     }
-    
   };
   return refresh;
 };
-
 
 // axios intercepter hook
 export const useAxiosePrivate = () => {
@@ -134,14 +127,13 @@ export const useAxiosePrivate = () => {
   useEffect(() => {
     // request interceptor
     const requestIntercept = axiosPrivet.interceptors.request.use(
-      (config:any) => {
-        console.log(accesToken,'acceeeeeeeeee');
-        
+      (config: any) => {
+        console.log(accesToken, "acceeeeeeeeee");
+
         console.log("requsrr inter");
         if (!config.headers["Authorization"]) {
           config.headers["Authorization"] = `Bearer ${accesToken}`;
         }
-
 
         if (shouldAttachMultipartHeader(config)) {
           config.headers["Content-Type"] = "multipart/form-data";
@@ -150,8 +142,8 @@ export const useAxiosePrivate = () => {
         }
         return config;
       },
-    (error) =>{ 
-        Promise.reject(error)
+      (error) => {
+        Promise.reject(error);
       }
     );
     // resposns interceptors
@@ -162,12 +154,12 @@ export const useAxiosePrivate = () => {
         if (error?.response?.status === 403 && !prevRequest?.sent) {
           prevRequest.sent = true;
           const newAccessToken = await refersh();
-          console.log(newAccessToken,'accccccesss tokennnnn');
+          console.log(newAccessToken, "accccccesss tokennnnn");
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-         // Re-send the request with the multipart header if it was added in the request interceptor
-         if (prevRequest.isMultipartHeaderAdded) {
-          prevRequest.headers["Content-Type"] = "multipart/form-data";
-        }
+          // Re-send the request with the multipart header if it was added in the request interceptor
+          if (prevRequest.isMultipartHeaderAdded) {
+            prevRequest.headers["Content-Type"] = "multipart/form-data";
+          }
           return axiosPrivet(prevRequest);
         }
         return Promise.reject(error);
@@ -182,59 +174,77 @@ export const useAxiosePrivate = () => {
   return axiosPrivet;
 };
 
-
 // funcation that checks the methodes and urls for ataching multipart form data hearder
-const shouldAttachMultipartHeader = (config:any) => {
-  const isPostMethod = config.method === 'post';
-  const isPatchMethod = config.method === 'patch';
-  const isPutMethod = config.method === 'put';
-  const urlIncludesMultipartEndpoint1 = config.url.includes('/api/course/courses') 
-  const urlIncludesMultipartEndpoint2 = config.url.includes('/api/course/lessones');
-  const urlIncludesMultipartEndpoint3 = config.url.includes('/api/course/updatecourse');
-  const urlIncludesMultipartEndpoint4 = config.url.includes('/api/course/updatelessones');
-  const urlIncludesMultipartEndpoint5 = config.url.includes('/api/users/updateprofile');
+const shouldAttachMultipartHeader = (config: any) => {
+  const isPostMethod = config.method === "post";
+  const isPatchMethod = config.method === "patch";
+  const isPutMethod = config.method === "put";
+  const urlIncludesMultipartEndpoint1 = config.url.includes(
+    "/api/course/courses"
+  );
+  const urlIncludesMultipartEndpoint2 = config.url.includes(
+    "/api/course/lessones"
+  );
+  const urlIncludesMultipartEndpoint3 = config.url.includes(
+    "/api/course/updatecourse"
+  );
+  const urlIncludesMultipartEndpoint4 = config.url.includes(
+    "/api/course/updatelessones"
+  );
+  const urlIncludesMultipartEndpoint5 = config.url.includes(
+    "/api/users/updateprofile"
+  );
   const shouldAttach =
     (isPostMethod || isPatchMethod || isPutMethod) &&
-    (urlIncludesMultipartEndpoint1 || urlIncludesMultipartEndpoint2 || urlIncludesMultipartEndpoint3  || urlIncludesMultipartEndpoint4 || urlIncludesMultipartEndpoint5  );
+    (urlIncludesMultipartEndpoint1 ||
+      urlIncludesMultipartEndpoint2 ||
+      urlIncludesMultipartEndpoint3 ||
+      urlIncludesMultipartEndpoint4 ||
+      urlIncludesMultipartEndpoint5);
   return shouldAttach;
 };
 
-
-
-
-
-
 // custom hook for add to cart
-export const useAddTocart =()=>{
-  const userdata:usersProp = useSelector((store:any)=>{
-    return store.user.userData
-   })
-   const axiosPrivet = useAxiosePrivate()
-   const navigate = useNavigate()
-    const handleAddtocart= async (courseId:string)=>{
-      
-    if(userdata._id){
+export const useAddTocart = () => {
+  const userdata: usersProp = useSelector((store: any) => {
+    return store.user.userData;
+  });
+  const axiosPrivet = useAxiosePrivate();
+  const navigate = useNavigate();
+  const handleAddtocart = async (courseId: string) => {
+    if (userdata._id) {
       const requestData = {
         userId: userdata._id,
         cartProductId: courseId,
       };
       try {
-        const response = await axiosPrivet.post(Cart_Api,requestData,{headers:{'Content-Type': 'application/json'}});
-       console.log(response,'<= handleAddtocart =>');
-      if(response.data.created || response.data.updated){
-         return UseCommen("Corse added into cart")
-      }else if(response.data.ProductPresent){
-         UseCommenError("Sorry the Course is already present in the cart");
-         return navigate(`/cart/${userdata._id}`)
-      }else{
-      }
+        const response = await axiosPrivet.post(Cart_Api, requestData, {
+          headers: { "Content-Type": "application/json" },
+        });
+        console.log(response, "<= handleAddtocart =>");
+        if (response.data.created || response.data.updated) {
+          return UseCommen("Corse added into cart");
+        } else if (response.data.ProductPresent) {
+          UseCommenError("Sorry the Course is already present in the cart");
+          return navigate(`/cart/${userdata._id}`);
+        } else {
+        }
       } catch (error) {
-        return console.log(error,'errororor');
+        return console.log(error, "errororor");
       }
-      
-    }else{
-      navigate("/auth/login")
+    } else {
+      navigate("/auth/login");
     }
-  }
- return handleAddtocart
-}
+  };
+  return handleAddtocart;
+};
+
+export const useLogout = () => {
+  const dispatch = useDispatch()
+  const SignOUt = () => {
+    localStorage.removeItem("Token");
+    dispatch(cleartoken());
+    dispatch(clearUser())
+  };
+  return SignOUt;
+};

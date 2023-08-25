@@ -14,9 +14,9 @@ function Profile() {
    })
   return (
     <>
-    <div className=' h-[150rem]'>
+    <div className=' h-[60rem]'>
     {/* <Navbar/> */}
-    <NavSmall users={userdata}/>
+    <NavSmall />
     <Navbottom Title={"Profile"} subTitle={'explore your profile'} />
     <div className='flex mt-8  ml-12'>
     <ProfileSection  users={userdata} />

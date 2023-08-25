@@ -9,6 +9,26 @@ function Category() {
   const { errors, handleSubmit, reset, register } = useCategoryValidate();
   const [resetpage, setResetPage] = useState(false);
   const [category, setCategory] = useState([]) as any;
+  const [currentPage, setCurrentPage] = useState(1);
+  const dataPerPage = 2;
+  const lastIndex = dataPerPage * currentPage;
+  const firstIndex = lastIndex - dataPerPage;
+  const page = Math.ceil(category.length / dataPerPage);
+  const paginateddata = category.slice(firstIndex, lastIndex);
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+  const handlePrev = () => {
+    if (currentPage != 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (page != currentPage) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,16 +54,17 @@ function Category() {
   };
   const handleCategorDelete = async (id: string) => {
     const response: any = await deleteCategory(id);
-    console.log(response, "delete response");
     if (response.data.courseExist) {
-      UseCommenError("Sorry can't delete this category , Course present in this category")
-    }else if(response.data.acknowledged && response.data.deletedCount === 1){
-        UseCommen("Category Succesfully deletd ")
-        setResetPage(true)
-    }else{
-      UseCommen("Oops...! Womething Went Wrong")
+      UseCommenError(
+        "Sorry can't delete this category , Course present in this category"
+      );
+    } else if (response.data.acknowledged && response.data.deletedCount === 1) {
+      UseCommen("Category Succesfully deletd ");
+      setResetPage(true);
+    } else {
+      UseCommen("Oops...! Womething Went Wrong");
     }
-  }
+  };
   return (
     <>
       <div className="mt-10 p-5 ml-5">
@@ -162,9 +183,7 @@ function Category() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                      {category?.map((data: any) => {
-                        console.log(data, "datall");
-
+                      {paginateddata?.map((data: any) => {
                         return (
                           <tr key={data?._id}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
@@ -179,7 +198,6 @@ function Category() {
                                   <span
                                     className="text-red-500 underline cursor-pointer hover:text-red-700"
                                     data-hs-overlay={`#hs-danger-alert${data?._id}`}
-                                    
                                   >
                                     Delete
                                   </span>
@@ -233,7 +251,9 @@ function Category() {
                                               Delete Category
                                             </h3>
                                             <p className="text-gray-500">
-                                            Are you sure you want to delete the category <h1 className="text-black text-lg  ">{ `${data?.category} ? ` }</h1>
+                                              Are you sure you want to delete
+                                              the category{" "}
+                                              <h1 className="text-black text-lg  ">{`${data?.category} ? `}</h1>
                                             </p>
                                           </div>
                                         </div>
@@ -267,40 +287,34 @@ function Category() {
                   </table>
                 </div>
                 <div className="py-1 px-4">
-                  <nav className="flex items-center space-x-2">
-                    <a
-                      className="text-gray-400 hover:text-teal-600 p-4 inline-flex items-center gap-2 font-medium rounded-md"
-                      href="#"
+                  <nav className="flex justify-start  items-center rounded-lg  space-x-2">
+                    <span
+                      className="text-gray-500 hover:text-teal-600 p-4 inline-flex items-center gap-2 rounded-md"
+                      onClick={handlePrev}
                     >
                       <span aria-hidden="true">«</span>
                       <span className="sr-only">Previous</span>
-                    </a>
-                    <a
-                      className="w-10 h-10 bg-teal-500 text-white p-4 inline-flex items-center text-sm font-medium rounded-full"
-                      href="#"
-                      aria-current="page"
-                    >
-                      1
-                    </a>
-                    <a
-                      className="w-10 h-10 text-gray-400 hover:text-teal-600 p-4 inline-flex items-center text-sm font-medium rounded-full"
-                      href="#"
-                    >
-                      2
-                    </a>
-                    <a
-                      className="w-10 h-10 text-gray-400 hover:text-teal-600 p-4 inline-flex items-center text-sm font-medium rounded-full"
-                      href="#"
-                    >
-                      3
-                    </a>
-                    <a
-                      className="text-gray-400 hover:text-teal-600 p-4 inline-flex items-center gap-2 font-medium rounded-md"
-                      href="#"
+                    </span>
+                    {Array.from({ length: page }, (_, index) => (
+                      <span
+                        key={index + 1}
+                        className={`w-10 h-10 ${
+                          currentPage === index + 1
+                            ? "bg-teal-600 text-white"
+                            : "text-gray-500 hover:text-teal-600"
+                        } p-4 inline-flex items-center text-sm font-medium rounded-full`}
+                        onClick={() => handlePageChange(index + 1)}
+                      >
+                        {index + 1}
+                      </span>
+                    ))}
+                    <span
+                      className="text-gray-500 hover:text-teal-600 p-4 inline-flex items-center gap-2 rounded-md"
+                      onClick={handleNext}
                     >
                       <span className="sr-only">Next</span>
                       <span aria-hidden="true">»</span>
-                    </a>
+                    </span>
                   </nav>
                 </div>
               </div>

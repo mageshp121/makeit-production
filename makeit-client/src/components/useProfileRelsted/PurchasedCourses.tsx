@@ -23,7 +23,7 @@ const PurchasedCourses = () => {
   }, []);
 
   return (
-    <div className="w-[100%]  bg-white  h-[rem]">
+    <div className="w-[100%]  bg-white ">
       <div className="h-[48rem] overflow-auto grid grid-cols-2 p-8 gap-8 justify-center  ">
         {purchasedCourse.map((object: any) => {
           return (

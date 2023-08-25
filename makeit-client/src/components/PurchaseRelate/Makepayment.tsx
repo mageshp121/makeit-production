@@ -25,7 +25,9 @@ const Makepayment = () => {
 
   const axiosePrivate = useAxiosePrivate()
 console.log(courseData,'Coursedata from redux');
-const arrayOfObjects = courseData.courses
+const arrayOfObjects = courseData.courses;
+console.log(arrayOfObjects,'oject');
+
 const newArray:any = []
 arrayOfObjects.forEach((obj:any) => {
   const newObj = {
@@ -159,66 +161,67 @@ const handleMakePayment= async ()=>{
             <div className="overflow-hidden w-full  mt-5 h-[34rem] ">
              
               <div className="pt-5 overflow-auto rounded-lg  h-[26rem]">
-                <article className="rounded-xl  shadow-xl mb-10 border-2 border-gray-100 bg-white">
-                  <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
-                    <a href="#" className="block shrink-0">
-                      <img
-                        alt="Speaker"
-                        src="/icvgops1gqcosgv3dxde.jpg"
-                        className="h-14 w-14 rounded-lg hover:scale-105 object-cover"
-                      />
-                    </a>
-                    <div>
-                      <h3 className="font-medium sm:text-lg">
-                        <a href="#" className="hover:underline"></a>
-                      </h3>
-                      <p className="line-clamp-2 text-sm text-gray-700"></p>
-                      <div className="mt-2 sm:flex sm:items-center sm:gap-2">
-                        <div className="flex items-center gap-1 text-gray-500">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                            />
-                          </svg>
-                          {/* <p className="text-xs">14 comments</p> */}
-                        </div>
-                        <span className="hidden sm:block" aria-hidden="true">
-                          ·
-                        </span>
-                        <p className="hidden sm:block sm:text-xs sm:text-gray-500">
-                          Created by
-                          <a
-                            href="#"
-                            className="font-medium  ml-2 underline  hover:text-gray-700"
-                          >
-                            Magesh
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+              {
+                arrayOfObjects.map((obj:any)=>{
 
-                  <div className="flex gap-10 mb-4 justify-end mr-12">
-                    <div className="mr-[19rem]">
-                      <p className="text-lg text-teal-600">₹ </p>
-                    </div>
-                    <span className="text-[10px] text-red-500 underline-offset-2 cursor-pointer underline font-medium sm:text-[13px]">
-                      Remove
-                    </span>
-                    <span className="text-[10px]  underline-offset-2 cursor-pointer underline font-medium sm:text-[13px]">
-                      Move to whishList
-                    </span>
-                  </div>
-                </article>
+                  
+                   return <article className="rounded-xl  shadow-xl mb-10 border-2 border-gray-100 bg-white" key={obj._id}>
+                   <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
+                     <a href="#" className="block shrink-0">
+                       <img
+                         alt="Speaker"
+                         src="/icvgops1gqcosgv3dxde.jpg"
+                         className="h-14 w-14 rounded-lg hover:scale-105 object-cover"
+                       />
+                     </a>
+                     <div>
+                       <h3 className="font-medium sm:text-lg">
+                        <p>{obj.WorkingTitle}</p>
+                       </h3>
+                       <p className="line-clamp-2 text-sm text-gray-700"></p>
+                       <div className="mt-2 sm:flex sm:items-center sm:gap-2">
+                         <div className="flex items-center gap-1 text-gray-500">
+                           <svg
+                             xmlns="http://www.w3.org/2000/svg"
+                             className="h-4 w-4"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor"
+                             strokeWidth={2}
+                           >
+                             <path
+                               strokeLinecap="round"
+                               strokeLinejoin="round"
+                               d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                             />
+                           </svg>
+                           {/* <p className="text-xs">14 comments</p> */}
+                         </div>
+                         <span className="hidden sm:block" aria-hidden="true">
+                           ·
+                         </span>
+                         <p className="hidden sm:block sm:text-xs sm:text-gray-500">
+                           Created by
+                           <a
+                             href="#"
+                             className="font-medium  ml-2 underline  hover:text-gray-700"
+                           >
+                             Magesh
+                           </a>
+                         </p>
+                         
+                       </div>
+                       <p className="text-teal-600   font-medium text-lg">1500</p>
+                      
+                       </div>
+                       
+                    
+                    
+                   </div>
+                 </article>
+                })
+              }
+                
               </div>
             </div>
           </div>
@@ -244,8 +247,9 @@ const handleMakePayment= async ()=>{
             <div className=" w-full  flex justify-between  mb-3 mt-2 h-12">
               <span className="ml-4 font-semibold text-balck mt-1">
                 Grand total
+               
               </span>
-              <span className="mr-2 font-semibold text-black mt-1"> </span>
+              <span className="mr-2 font-sm text-black-500 mt-1">₹ { courseData.total}</span>
             </div>
             <div onClick={()=>handleMakePayment()} className="items-center">
               <span  className="pt-3 pl-24  cursor-pointer text-white h-12 flex gap-4 w-full ju bg-teal-600  shadow-2xl    font-medium rounded-lg text-md px-5 py-2.5 text-center  mb-2">

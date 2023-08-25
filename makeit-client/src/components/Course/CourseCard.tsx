@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { usersProp } from "../../utils/types/types";
 import { Cart_Api } from "../../utils/api/endPoints/commen";
 import { UseCommen, UseCommenError } from "../../utils/toastify/toasty";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAxiosePrivate } from "../../utils/customHooks/hook";
 
 
@@ -61,26 +61,24 @@ const CourseCard =  ()  => {
       navigate("/auth/login")
     }
    }
-console.log(courses.length,'lengthhhh');
-
-
-
  return (
-    <div className="mt-4 overflow-auto h-[44rem]">
-      <div className="mx-auto sm:grid-cols-4  grid max-w-2xl grid-cols-1 overflow-auto gap-x-8 gap-y-16 pt-5  lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    <div className="mt-4  overflow-auto h-[46rem]">
+      <div className="mx-auto sm:grid-cols-4 pb-10  grid max-w-2xl grid-cols-1 overflow-auto gap-x-8 gap-y-16 pt-2 mb-6  lg:mx-0 lg:max-w-none lg:grid-cols-3">
         {courses.length > 0 ? (
           courses.map((course: any) => (
-            <article
+            <div
               key={course?._id}
-              className="flex max-w-xl  flex-col items-start justify-between"
+              className="flex w-[25rem] p-4  border-gray-300 border  shadow-lg shadow-gray-400 rounded-lg    flex-col items-start justify-between"
             >
-              <div className="rounded-lg mb-6">
+              <Link to={"/single"}>
+              <div className="rounded-lg    mb-6">
                 <img
                   className="rounded-lg hover:shadow-xl"
                   src={course?.thumbNailImageS3UrlKey}
                   alt="Thumbnail image"
                 />
               </div>
+              </Link>
               <div className="flex items-center gap-x-4 text-xs">
                 <time dateTime="Mar 16, 2020" className="text-gray-500">
                   2020-03-16
@@ -98,36 +96,25 @@ console.log(courses.length,'lengthhhh');
                 </p>
               </div>
               <div className="flex w-[100%]">
+                <div className="mt-5">
                 <Tutordetails data={course?.tutorId} />
-                <div className="w-[25%]  ml-24">
-                  <img
-                    className="pt-4  w-16"
-                    src="wired-outline-20-love-heart.gif"
-                    alt="wishlist icon"
-                  />
                 </div>
-              </div>
-              <div className="flex justify-start ml-2 w-[100%]">
+                <div className="flex  pt-8 ml-52 w-[100%]">
                 <h3 className="text-2xl font-semibold leading-6 text-teal-600 group-hover:text-gray-600">
                   ₹ {course?.CoursePrice}
                 </h3>
               </div>
+              </div>
+              
               <div className="w-[100%] flex mt-5 ">
-                <div className="w-[70%]">
+                <div className="w-[100%]">
                   <button onClick={()=>handleAddtocart(course._id)} className="hover:shadow-2xl bg-teal-600 items-center justify-center w-full py-4 font-semibold tracking-wide text-gray-100 rounded-lg">
                   <span className="pr-2">✚</span> Add to Cart
                   </button>
                 </div>
-                <div className="w-[20%] h-14 ml-9 rounded-lg pl-3 border shadow-md border-gray-400">
-                  <img
-                    className="w-[80%] m"
-                    src="shopping-bag.png"
-                    alt="cart-image"
-                  />
-                </div>
                 <div></div>
               </div>
-            </article>
+            </div>
           ))
         ) : (
         <Shimmer/>

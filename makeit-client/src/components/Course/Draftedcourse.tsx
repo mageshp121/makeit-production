@@ -76,11 +76,11 @@ const DraftedCourse = () => {
   return (
     <>
       {courseData.length > 0 ? (
-        <div className="w-[100%] grid overflow-auto h-[60rem]   grid-cols-1 gap-5">
+        <div className="w-[100%] grid overflow-auto h-[60rem]    grid-cols-1 gap-5">
           {courseData &&
             courseData.map((item: any) => {
               return (
-                <div className="block  p-8 border-gray-200 h-[33rem] hover:shadow-xl border bg-white rounded-lg ml-6 mr-6">
+                <div className="block  p-8 border-gray-200 bg-black h-[33rem] hover:shadow-xl border rounded-lg ml-6 mr-6">
                   <div className="flex flex-row gap-5  ">
                     <Link to={`/tutor/profile/courseview/${item._id}`}
                     key={item._id}>
@@ -213,56 +213,8 @@ const DraftedCourse = () => {
       ) : (
         <>
         {/* shimmer ui*/}
-          <div className="flex mb-5 animate-pulse">
-            <div className="flex-shrink-0">
-              <span className="w-12 h-12 block bg-gray-200 rounded-full dark:bg-gray-700" />
-            </div>
-            <div className="ml-4 mt-2 w-full">
-              <h3
-                className="h-4 bg-gray-200 rounded-md dark:bg-gray-700"
-                style={{ width: "40%" }}
-              />
-              <ul className="mt-5 space-y-3">
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-              </ul>
-            </div>
-          </div>
-          <div className="flex animate-pulse">
-            <div className="flex-shrink-0">
-              <span className="w-12 h-12 block bg-gray-200 rounded-full dark:bg-gray-700" />
-            </div>
-            <div className="ml-4 mt-2 w-full">
-              <h3
-                className="h-4 bg-gray-200 rounded-md dark:bg-gray-700"
-                style={{ width: "40%" }}
-              />
-              <ul className="mt-5 space-y-3">
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-              </ul>
-            </div>
-          </div>
-          <div className="flex animate-pulse">
-            <div className="flex-shrink-0">
-              <span className="w-12 h-12 block bg-gray-200 rounded-full dark:bg-gray-700" />
-            </div>
-            <div className="ml-4 mt-2 w-full">
-              <h3
-                className="h-4 bg-gray-200 rounded-md dark:bg-gray-700"
-                style={{ width: "40%" }}
-              />
-              <ul className="mt-5 space-y-3">
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-                <li className="w-full h-4 bg-gray-200 rounded-md dark:bg-gray-700" />
-              </ul>
-            </div>
+          <div className="ml-72  mt-32">
+              <img  className="h-[20rem] " src="/empty-box.png" alt="" />
           </div>
             {/* shimmer ui end */}
         </>

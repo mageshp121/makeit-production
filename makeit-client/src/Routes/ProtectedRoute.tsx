@@ -1,18 +1,20 @@
 
 import { Route, Routes,Navigate } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { UseSomthingWentWrong } from "../utils/toastify/toasty";
 
-
-
-
-export const ProtectedRoute= ({ path, element } : { path: string, element: JSX.Element }) => {
-  const [currentUser] = useState(true);
-  if (!currentUser) {
-    return <Navigate to="/auth/login" />;
+const ProtectedRoute = ({children}:{children:any}) => {
+  const user = useSelector((stor:any) => stor?.token?.token); 
+  if(!user) {
+      UseSomthingWentWrong()
+      return <Navigate to="/auth/login"  />
   }
-  return <Routes><Route path={path} element={element} /></Routes>;
+return children
+
 };
 
 
+export default ProtectedRoute;
 
 
