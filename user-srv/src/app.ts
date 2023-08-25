@@ -13,11 +13,6 @@ import cookieParser from "cookie-parser";
 
 env.config();
 
-
-
-
-
-
 const app = express();
 const router = express.Router();
 app.use(express.json({ limit: "1000mb" }));
