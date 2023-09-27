@@ -38,7 +38,6 @@ export default function SingleCourseViewUser() {
     console.log("fetch use effetctctctctctctc");
     const fetData = async () => {
       const response: any = await getAllCourses();
-      console.log(response.data);
       const resPublishedData = response.data.filter((item:any) => item.drafted === false)
       setCoursesData(resPublishedData);
       setFilteringData(resPublishedData);

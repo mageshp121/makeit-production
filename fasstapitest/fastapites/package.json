@@ -1,0 +1,19 @@
+{
+  "name": "fastapites",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --experimental-modules index.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fast-two-sms": "^3.0.0",
+    "fast2sms": "^1.0.3",
+    "nodemon": "^2.0.22",
+    "otp-generator": "^4.0.1"
+  }
+}
