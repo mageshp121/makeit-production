@@ -1,5 +1,4 @@
 import { Request,Response } from "express";
-// import { attachRefresTokenToCookie } from "../../utils/jwt/jwt";
 import { BadRequestError } from "@makeitcmn/comon";
 export default ( depentencies:any )=>{
     const login = async (req:Request,res:Response) => {
@@ -11,7 +10,6 @@ export default ( depentencies:any )=>{
                     res.send(response)
                 }else{
                     const  { userWithoutPassword,accesToken,reFreshToken } = response
-                   
                     res.status(200).send({userWithoutPassword,accesToken,reFreshToken});
                 }
         }catch(error){
