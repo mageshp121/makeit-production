@@ -7,7 +7,6 @@ import sharp from "sharp";
 import { CourseCreatedPublisher } from "../../../events/publishers/course-created-publisher";
 import { natsWrapper } from "../../../nats-wrapper";
 dotenv.config();
-
 /*
  *
  *

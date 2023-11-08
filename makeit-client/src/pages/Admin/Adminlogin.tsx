@@ -16,7 +16,6 @@ const Adminlogin = () => {
     }
     
   };
-
   return (
     <div className="h-screen  pt-32">
       <>
@@ -62,6 +61,8 @@ const Adminlogin = () => {
                   className="mt-4 px-4 py-3 shadow-md leading-6 text-base rounded-md border border-transparent  bg-teal-700 text-white hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
                 />
               </form>
+
+              
             </div>
           </div>
         </div>

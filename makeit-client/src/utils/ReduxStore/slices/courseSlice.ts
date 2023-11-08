@@ -12,7 +12,6 @@ const courseSlice = createSlice({
     } as CourseState,
     reducers:{
         addCourse:(state,action:PayloadAction<Course>)=>{
-            console.log(action.payload,'payloaddd');
              state.courseData.push(action.payload)
         },
         clearCourse:(state)=>{

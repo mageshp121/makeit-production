@@ -28,7 +28,6 @@ const TutorRegister = () => {
       if (response.data.Message) {
         setErrorMessage(response.data.Message[0].error);
       } else {
-       
         // mix panel
         mixpanel.track("New tutor is registered",{
             date: curreDate.toISOString(),

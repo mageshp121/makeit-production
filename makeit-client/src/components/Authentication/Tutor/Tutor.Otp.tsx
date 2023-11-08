@@ -10,7 +10,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { UsegenerateRecaptcha } from "../../../utils/customHooks/hook";
 import { useSelector } from "react-redux";
-
 function TutorOtp() {
   const [count, setCount] = useState(1);
   const [minutes, setMinutes] = useState(1);
@@ -24,19 +23,16 @@ function TutorOtp() {
   const phoneNumber = userdata.phone
   const number =  "+91" +phoneNumber.toString() 
   const { register, control, handleSubmit } = useForm<Otpfomevalue>();
-
   const resendOTP = () => {
     isMountedRef.current = false;
     setOtpControler(true);
     setMinutes(1);
     setSeconds(30);
   };
-
     useEffect(() => {
       console.log("recatptcha verifier useEffect");
       UsegenerateRecaptcha(authentication);
     }, []);
-
    useEffect(() => {
      if (!isMountedRef.current) {
        console.log("useEffect calling ");
@@ -47,7 +43,6 @@ function TutorOtp() {
        isMountedRef.current = true;
      }
    }, [otpControler, isMountedRef.current, resendOTP]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {

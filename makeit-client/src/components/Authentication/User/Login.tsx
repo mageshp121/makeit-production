@@ -13,8 +13,6 @@ import { getUserByEmail } from "../../../utils/api/methods/get";
 import { useDispatch } from "react-redux";
 import { addUser,clearUser } from "../../../utils/ReduxStore/slices/userSlice";
 import { addtoken } from "../../../utils/ReduxStore/slices/tokenSlice";
-
-
 function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -38,13 +36,11 @@ function Login() {
               }else{
                 navigate("/tutor/login")
               }
-                
             }
           } catch (error) {
             UseSomthingWentWrong();
         }
     }
-
   const googleSignInUser = async (auth: Auth) => {
       try {
         const response = await useGoogleSignIn(auth);
@@ -77,7 +73,6 @@ function Login() {
   return (
 
 <>
-
        {/* Display error messages */}
        <FormEror errors={errors}/>
        {

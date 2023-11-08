@@ -24,7 +24,6 @@ export const useConvertString = (data: object) => {
   return concatenatedValue;
 };
 
-// custom hook for send otp
 export const useSendOtp = (
   auth: Auth,
   number: string,
@@ -32,7 +31,10 @@ export const useSendOtp = (
 ) => {
   console.log(typeof number);
   console.log(number, "number");
+  console.log(auth,"------", number," ++++++++ " ,appVerifier);
+  
   signInWithPhoneNumber(auth, number, appVerifier)
+  
     .then((confirmationResult) => {
       window.confirmationResult = confirmationResult;
     })
@@ -54,7 +56,7 @@ export const UsegenerateRecaptcha = (auth: Auth) => {
   );
 };
 
-// custom hook for verfying the otp
+
 export const useVerifyOtp = async (data: Otpfomevalue): Promise<any> => {
   let otp = useConvertString(data);
   if (otp.length === 6) {
@@ -74,7 +76,8 @@ export const useVerifyOtp = async (data: Otpfomevalue): Promise<any> => {
   }
 };
 
-// custom hook for google sign in
+
+
 export const useGoogleSignIn = async (auth: Auth): Promise<any> => {
   return new Promise((resolve, reject) => {
     console.log("promise entered");
@@ -97,24 +100,18 @@ export const useGoogleSignIn = async (auth: Auth): Promise<any> => {
 // custom hook for getting newaccess token using refresh token
 export const useRefreshToken = () => {
   const dispatch = useDispatch();
-  // const accesToken = useSelector((store: any) => store.token.token);
-  // console.log(accesToken, "<=  accesstoken token from token slice => ");
   const refreshtoken: any = localStorage.getItem("Token");
-  console.log(refreshtoken, '<= localStorage.getItem("Token") =>');
   const refresh = async () => {
-    console.log("caling refers ap[iiiiii");
-    // calling an api for getting new refersh token
     const headers = {
       authorization: `Bearer ${refreshtoken}`,
       "Content-Type": "application/json",
     };
     try {
       const responase: any = await client().get(getRefersh, { headers });
-      console.log(responase, "<= getRefreshToken(refreshtoken) api =>");
       dispatch(addtoken(responase.data));
       return responase.data;
     } catch (error) {
-      console.log(error, "errrrrrrrr");
+      console.log(error, "error");
     }
   };
   return refresh;
@@ -137,7 +134,6 @@ export const useAxiosePrivate = () => {
 
         if (shouldAttachMultipartHeader(config)) {
           config.headers["Content-Type"] = "multipart/form-data";
-          // Store a flag in the config to indicate that the multipart header was added
           config.isMultipartHeaderAdded = true;
         }
         return config;
@@ -154,9 +150,7 @@ export const useAxiosePrivate = () => {
         if (error?.response?.status === 403 && !prevRequest?.sent) {
           prevRequest.sent = true;
           const newAccessToken = await refersh();
-          console.log(newAccessToken, "accccccesss tokennnnn");
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-          // Re-send the request with the multipart header if it was added in the request interceptor
           if (prevRequest.isMultipartHeaderAdded) {
             prevRequest.headers["Content-Type"] = "multipart/form-data";
           }
@@ -204,7 +198,6 @@ const shouldAttachMultipartHeader = (config: any) => {
   return shouldAttach;
 };
 
-// custom hook for add to cart
 export const useAddTocart = () => {
   const userdata: usersProp = useSelector((store: any) => {
     return store.user.userData;
@@ -221,7 +214,6 @@ export const useAddTocart = () => {
         const response = await axiosPrivet.post(Cart_Api, requestData, {
           headers: { "Content-Type": "application/json" },
         });
-        console.log(response, "<= handleAddtocart =>");
         if (response.data.created || response.data.updated) {
           return UseCommen("Corse added into cart");
         } else if (response.data.ProductPresent) {

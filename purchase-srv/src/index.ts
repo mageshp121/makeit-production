@@ -11,7 +11,7 @@ dotenv.config();
 const start  = async() =>{
     try{
       await natsWrapper.connect('makeit', 'purchase-srv', 'http://nats-srv:4222');
-    natsWrapper.client.on('close', () => {
+     natsWrapper.client.on('close', () => {
       console.log('NATS connection closed!');
       process.exit();
     });

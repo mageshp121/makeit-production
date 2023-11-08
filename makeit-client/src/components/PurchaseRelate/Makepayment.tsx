@@ -225,11 +225,11 @@ const handleMakePayment= async ()=>{
               </div>
             </div>
           </div>
-          <div className="bg-[#f3f2f0] ml-60 shadow-md border p-2 border-gray-100 rounded-md h-[19rem] w-80">
+          <div className="bg-[#f3f2f0] ml-60 shadow-md border p-2 border-gray-100 rounded-md h-[12rem] w-80">
             <div className=" w-full   pt-4 ml-4 mb-3  h-12">
               <p className="text-xl font-medium">Order Recap</p>
             </div>
-            <div className="w-full  pl-2 gap-1 flex flex-col h-20">
+            {/* <div className="w-full  pl-2 gap-1 flex flex-col h-20">
               <div className="h-10  flex justify-between">
                 <h1 className="ml-2 font-medium text-slate-500 mt-1">
                   Subtotal
@@ -243,7 +243,7 @@ const handleMakePayment= async ()=>{
                 </span>
                 <span className="mr-2 font-sm text-slate-500 mt-1">₹ #</span>
               </div>
-            </div>
+            </div> */}
             <div className=" w-full  flex justify-between  mb-3 mt-2 h-12">
               <span className="ml-4 font-semibold text-balck mt-1">
                 Grand total

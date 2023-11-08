@@ -12,7 +12,6 @@ const lessonSlice = createSlice({
     } ,
     reducers:{
         addLessone:(state)=>{
-            console.log(state.lessoneDataOrder,'payloaddd');
              state.lessoneDataOrder=state.lessoneDataOrder+1
         },
         clearLesson:(state)=>{

@@ -62,7 +62,7 @@ function Category() {
       UseCommen("Category Succesfully deletd ");
       setResetPage(true);
     } else {
-      UseCommen("Oops...! Womething Went Wrong");
+      UseCommen("Oops...! Something went wrong");
     }
   };
   return (

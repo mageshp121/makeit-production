@@ -10,21 +10,14 @@ import { ErrorComponent } from "../../ErrorComponents/ErrorComponent";
 import { UseSomthingWentWrong } from "../../../utils/toastify/toasty";
 import { useGoogleSignIn } from "../../../utils/customHooks/hook";
 import { authentication } from "../../../utils/config/firebase";
-
-
 import { Auth } from "firebase/auth";
 import { getUserByEmail } from "../../../utils/api/methods/get";
 import { useDispatch } from "react-redux";
 import { addUser, clearUser } from "../../../utils/ReduxStore/slices/userSlice";
 import { addtoken } from "../../../utils/ReduxStore/slices/tokenSlice";
-
-
 function TutorLogin() {
   const dispatch = useDispatch();
    const navigate = useNavigate();
-  
-
- 
   const { errors, handleSubmit, register } = useValidate();
   const [errorMessage, setErrorMessage] = useState("");
   const formSubmit = async (Data: LoginFormData) => {

@@ -99,81 +99,83 @@ const Cart = () => {
         <div className="h-[36rem] p-5 pt-16 grid grid-cols-2 overflow-hidden gap-7">
           <div className="bg-[#f3f2f0] shadow-md border border-gray-100 p-5 gap-8 rounded-md overflow-auto h-[31.5rem] w-[50rem] ">
             <div className="pt-5 ">
-              {matched?.map((data: any, index: any) => {
-                return (
-                  <article
-                    key={index}
-                    className="rounded-xl  shadow-xl mb-10 border-2 border-gray-100 bg-white"
-                  >
-                    <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
-                      <a href="#" className="block shrink-0">
-                        <img
-                          alt="Speaker"
-                          src="/icvgops1gqcosgv3dxde.jpg"
-                          className="h-14 w-14 rounded-lg hover:scale-105 object-cover"
-                        />
-                      </a>
-                      <div>
-                        <h3 className="font-medium sm:text-lg">
-                          <a href="#" className="hover:underline">
-                            {data?.WorkingTitle}
-                          </a>
-                        </h3>
-                        <p className="line-clamp-2 text-sm text-gray-700">
-                         {data?.ShortDescription}
-                        </p>
-                        <div className="mt-2 sm:flex sm:items-center sm:gap-2">
-                          <div className="flex items-center gap-1 text-gray-500">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                              />
-                            </svg>
-                            {/* <p className="text-xs">14 comments</p> */}
-                          </div>
-                          <span className="hidden sm:block" aria-hidden="true">
-                            ·
-                          </span>
-                          <p className="hidden sm:block sm:text-xs sm:text-gray-500">
-                            Created by
-                            <a
-                              href="#"
-                              className="font-medium  ml-2 underline  hover:text-gray-700"
-                            >
-                              Magesh
+  
+     {(matched?.map((data: any, index: any) => {
+                  return (
+                    <article
+                      key={index}
+                      className="rounded-xl  shadow-xl mb-10 border-2 border-gray-100 bg-white"
+                    >
+                      <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
+                        <a href="#" className="block shrink-0">
+                          <img
+                            alt="Speaker"
+                            src="/icvgops1gqcosgv3dxde.jpg"
+                            className="h-14 w-14 rounded-lg hover:scale-105 object-cover"
+                          />
+                        </a>
+                        <div>
+                          <h3 className="font-medium sm:text-lg">
+                            <a href="#" className="hover:underline">
+                              {data?.WorkingTitle}
                             </a>
+                          </h3>
+                          <p className="line-clamp-2 text-sm text-gray-700">
+                           {data?.ShortDescription}
                           </p>
+                          <div className="mt-2 sm:flex sm:items-center sm:gap-2">
+                            <div className="flex items-center gap-1 text-gray-500">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                                />
+                              </svg>
+                              {/* <p className="text-xs">14 comments</p> */}
+                            </div>
+                            <span className="hidden sm:block" aria-hidden="true">
+                              ·
+                            </span>
+                            <p className="hidden sm:block sm:text-xs sm:text-gray-500">
+                              Created by
+                              <a
+                                href="#"
+                                className="font-medium  ml-2 underline  hover:text-gray-700"
+                              >
+                                Magesh
+                              </a>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div className="flex gap-10 mb-4 justify-end mr-12">
-                      <div className="mr-[25rem]">
-                        <p className="text-xl font-bold text-teal-600">₹ {data.CoursePrice}</p>
+  
+                      <div className="flex gap-10 mb-4 justify-end mr-12">
+                        <div className="mr-[25rem]">
+                          <p className="text-xl font-bold text-teal-600">₹ {data.CoursePrice}</p>
+                        </div>
+                        <span onClick={()=>handleRemoveFromCart(data._id)} className="text-xl  text-red-500 underline-offset-2 cursor-pointer underline font-medium sm:text-[px]">
+                          Remove
+                        </span>
                       </div>
-                      <span onClick={()=>handleRemoveFromCart(data._id)} className="text-xl  text-red-500 underline-offset-2 cursor-pointer underline font-medium sm:text-[px]">
-                        Remove
-                      </span>
-                    </div>
-                  </article>
-                );
-              })}
+                    </article>
+                  );
+                }))}
+              
             </div>
           </div>
-          <div className="bg-[#f3f2f0] ml-60 shadow-md border p-2 border-gray-100 rounded-md h-[23rem] w-80">
+          <div className="bg-[#f3f2f0] ml-60 shadow-md border p-2 border-gray-100 rounded-md h-[17rem] w-80">
             <div className=" w-full   pt-4 ml-4 mb-3  h-12">
               <p className="text-xl font-medium">Discount Code</p>
             </div>
-            <div className=" flex pl-2 gap-3 justify-between w-full  h-16">
+            {/* <div className=" flex pl-2 gap-3 justify-between w-full  h-16">
               <div className="h-5 w-[75%] ">
                 <input
                   type="text"
@@ -189,8 +191,8 @@ const Cart = () => {
                   Apply
                 </button>{" "}
               </div>
-            </div>
-            <div className="w-full  pl-2 gap-1 flex flex-col h-20">
+            </div> */}
+            {/* <div className="w-full  pl-2 gap-1 flex flex-col h-20">
               <div className="h-10  flex justify-between">
                 <h1 className="ml-2 font-medium text-slate-500 mt-1">
                   Subtotal
@@ -204,14 +206,14 @@ const Cart = () => {
                 </span>
                 <span className="mr-2 font-sm text-slate-500 mt-1">₹ #</span>
               </div>
-            </div>
-            <div className=" w-full  flex justify-between  mb-3 mt-2 h-12">
+            </div> */}
+            <div className=" w-full  flex justify-between  mb-3 mt-10 h-12">
               <span className="ml-4 font-semibold text-balck mt-1">
                 Grand total
               </span>
               <span className="mr-2 font-semibold text-black mt-1">₹ {totalamount }</span>
             </div>
-            <div onClick={addDataIntoRedux} className="items-center">
+            <div onClick={addDataIntoRedux} className="items-center mt-10">
               <span className="pt-3 pl-28  cursor-pointer text-white h-12 flex gap-4 w-full ju bg-teal-600  shadow-2xl    font-medium rounded-lg text-md px-5 py-2.5 text-center  mb-2">
                 Check Out
               </span>
