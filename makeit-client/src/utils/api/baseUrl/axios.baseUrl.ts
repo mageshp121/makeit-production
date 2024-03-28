@@ -1,6 +1,6 @@
 
 import axios from "axios";
-const BASE_URL = 'http://makeit.dev'; 
+const BASE_URL = 'https://itmake.world'; 
 
 export default ()=>{
     return axios.create({
