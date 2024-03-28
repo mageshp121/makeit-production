@@ -6,7 +6,6 @@ import SectionDownCourse from "../../components/Commoncomponents/SectionDownCour
 import SectionDown4 from "../../components/Commoncomponents/SectionDown4";
 import { usersProp } from "../../utils/types/types";
 import { useSelector } from "react-redux";
-import mixpanel from "mixpanel-browser";
 // import Chat from '../../components/Chat/Chat'
 
 function Home() {
@@ -18,6 +17,10 @@ function Home() {
   // } else {
   //   mixpanel.track("Landing page");
   // }
+
+
+
+
   return (
     <>
       {/* <Chat/> */}
