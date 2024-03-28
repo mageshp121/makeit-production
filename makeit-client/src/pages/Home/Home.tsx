@@ -18,10 +18,6 @@ function Home() {
   // } else {
   //   mixpanel.track("Landing page");
   // }
-
-
-  
-
   return (
     <>
       {/* <Chat/> */}
