@@ -24,6 +24,7 @@ export default (depentencies: any) => {
           s3ImageUrl:null,
           isBlock:null
     }
+    
     try {
       const {useCase: { createUser_useCase },} = depentencies;
       const { exicutefunction } = await createUser_useCase(depentencies);

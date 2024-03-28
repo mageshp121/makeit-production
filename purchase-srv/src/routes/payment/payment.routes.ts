@@ -20,7 +20,6 @@ export default (dependencies:any)=>{
     // cart contrpller
     const { checkout_controler,get_Key,paymentVarify_controller } = paymentControlers(dependencies);
     router.get("/getway",get_Key)
-
     // post methodes
     router.post("/checkout",jwtauthentication(secret),checkout_controler);
     router.post('/verify',jwtauthentication(secret),paymentVarify_controller);

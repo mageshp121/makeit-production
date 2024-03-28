@@ -18,6 +18,7 @@ export default (dependencies: any) => {
     if (!newRefreshToken) {
       throw new NotFoundError();
     } else {
+      res.cookie("accessToken",newRefreshToken)
       res.send(newRefreshToken).status(200);
     }
   };

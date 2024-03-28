@@ -41,9 +41,9 @@ const Cart = () => {
 
   
   useEffect(() => {
-    if (course.length > 0 && cartData.length > 0) {
-      const matchedCourses = course.filter((data: any) =>
-        cartData.includes(data._id)
+    if (course?.length > 0 && cartData?.length > 0) {
+      const matchedCourses = course?.filter((data: any) =>
+        cartData?.includes(data._id)
       );
       console.log(matchedCourses, "matata");
       setMatched(matchedCourses);
