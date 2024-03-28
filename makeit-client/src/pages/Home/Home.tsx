@@ -13,7 +13,11 @@ function Home() {
   const userdata: usersProp = useSelector((store: any) => {
     return store.user.userData;
   });
-  
+  // if (userdata._id) {
+  //   mixpanel.track("User landed home afted authentication");
+  // } else {
+  //   mixpanel.track("Landing page");
+  // }
 
   return (
     <>
