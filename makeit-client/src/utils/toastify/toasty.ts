@@ -54,6 +54,21 @@ export const UseCommen = (msg:string) => {
   });
 };
 
+export const UseAuth = (msg:string) => {
+  return toast.warning(msg, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};
+
+
+
 export const UseCommenError = (msg:string) => {
   return toast.error(msg, {
     position: "top-center",

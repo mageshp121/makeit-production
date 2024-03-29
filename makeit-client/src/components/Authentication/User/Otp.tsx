@@ -25,7 +25,7 @@ function OTP() {
   const userdata:any = useSelector((store:any)=>{
     return store.user.userData
    })
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const isMountedRef = useRef(false);
 
   const phoneNumber = userdata.phone
@@ -77,12 +77,14 @@ function OTP() {
   const fromSubit = async (data: Otpfomevalue) => {
     setCount(count + 1);
     if (count <= 2) {
+      console.log("verification funcation");
       await useVerifyOtp(data)
         .then((response) => {
           console.log(response, "response");
-          if (response.sucess) Navigate("/");
+          if (response.sucess) navigate("/",{replace:true});
         })
         .catch((_err) => {
+          UseCommen('Invalid OTP Please check the OTP')
         });
     } else {
       useOtpSubmit("otp already submited please wait a second");

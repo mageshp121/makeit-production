@@ -5,6 +5,7 @@ import { useLogout } from "../../utils/customHooks/hook";
 import { useEffect, useState } from "react";
 import { set } from "animejs";
 import { useSelector } from "react-redux";
+import { object } from "zod";
 
 function Navbar() {
   const logout = useLogout();
@@ -12,6 +13,7 @@ function Navbar() {
   const users:usersProp = useSelector((store:any)=>{
     return store.user.userData
    })
+console.log(users,"users data form ");
 
   useEffect(()=>{
 
@@ -97,12 +99,20 @@ function Navbar() {
                   </div>
                  
                   <div className="py-2 first:pt-0 last:pb-0">
-                    <Link to={'/profile'}
+                    {
+                      users.roll === "tutor" ? <Link to={'/tutor/profile'}
+                      className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                      
+                    >
+                      Account 
+                    </Link> :    <Link to={'/profile'}
                       className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                       
                     >
                       Account 
                     </Link>
+                    }
+                 
                     <div
                       className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                       onClick={handleLoguot}
@@ -128,7 +138,7 @@ function Navbar() {
         </div>
         </Link>
               </>
-             
+              
             )}
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -176,7 +186,10 @@ function Navbar() {
                 </Link>
               </li>
               <li> 
-                <Link to={'/tutor'}> <span className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"> Become An instructor</span></Link>
+                {
+                  Object.keys(users).length === 0  ?  <Link to={'/tutor'}> <span className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-500 md:p-0 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"> Become An instructor</span></Link> : <p className="text-green-500  underline underline-offset-2">Active  {users.roll === "tutor" ? "Tutor" :"User"} </p>                                                  
+                }
+                
               </li>
               <li className="">
               </li>
@@ -188,6 +201,7 @@ function Navbar() {
               </div>
               </Link>
             }
+            
           </div>
         </div>
       </nav>

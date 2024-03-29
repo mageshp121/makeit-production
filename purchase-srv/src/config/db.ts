@@ -4,7 +4,6 @@ dotenv.config()
 
 export const dbConnect = async () => {
     try {
-        console.log(process.env.MONGO_PASS);
         const options = {
             useNewUrlParser: true,
             useUnifiedTopology: true,

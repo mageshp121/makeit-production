@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAxiosePrivate } from "../../utils/customHooks/hook";
 
 const CourseCard = () => {
+  console.log("card loging");
   const userdata: usersProp = useSelector((store: any) => {
     return store.user.userData;
   });

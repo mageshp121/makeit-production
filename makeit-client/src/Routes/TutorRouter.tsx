@@ -16,6 +16,7 @@ import CourseBasicUpdate from "../components/Forms/Tutor/CourseBasicUpdate";
 import UpdateLesson from "../components/Forms/Tutor/UpdateLessonForm";
 import Lessoneupdate from "../components/Course/Lessoneupdate";
 import ProfileUpdate from "../components/Forms/CommonForm/ProfileUpdate";
+import PurchasedCourses from "../components/useProfileRelsted/PurchasedCourses";
 
 function TutorRouter() {
   return (
@@ -47,10 +48,10 @@ function TutorRouter() {
        <Profile />
       </TutorProtectedRoute>
         }>
+          <Route path="course" element={<PurchasedCourses/>} />
           <Route index  element={
            <TutorProtectedRoute>
             <SalesHistory/>
-
          </TutorProtectedRoute>
           } />
           <Route

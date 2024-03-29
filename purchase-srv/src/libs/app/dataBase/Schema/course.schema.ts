@@ -21,7 +21,6 @@ const CourseCopySchema = new mongoose.Schema({
     versionKey:false
 })
 const coursecopy = mongoose.model("coursecopies", CourseCopySchema,)
-console.log(coursecopy,'mongoose course');
 export {
    coursecopy
 }

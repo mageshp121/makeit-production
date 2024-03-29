@@ -20,7 +20,6 @@ const orderSchema = new mongoose.Schema({
     versionKey:false
 })
 const order = mongoose.model("orders",orderSchema)
-console.log(order,'mongoose course');
 export {
    order
 }
@@ -38,7 +37,7 @@ const orderFortutorSchema = new mongoose.Schema({
     versionKey:false
 })
 const tutoOrderHistory = mongoose.model("tutorOrderHistories",orderFortutorSchema)
-console.log(tutoOrderHistory,'mongoose course');
+
 export {
    tutoOrderHistory
 }

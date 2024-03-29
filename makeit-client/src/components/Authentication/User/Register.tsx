@@ -106,7 +106,7 @@ const Register = () => {
                     />
                   </form>
                   <p className="mt-6 text-xs text-center text-gray-600">
-                    <Link to={"login"}>
+                    <Link to={"login"} replace={true}>
                       <span>
                         Allready have an account{" "}
                         <span className="underline text-green-500">Login</span>

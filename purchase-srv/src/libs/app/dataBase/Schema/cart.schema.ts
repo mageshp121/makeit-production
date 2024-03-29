@@ -7,7 +7,7 @@ const courseSchema = new mongoose.Schema({
     versionKey:false
 })
 const cart = mongoose.model("carts",courseSchema)
-console.log(cart,'mongoose course');
+
 export {
    cart
 }

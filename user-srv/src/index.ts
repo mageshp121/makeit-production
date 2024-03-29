@@ -7,10 +7,8 @@ const start  = async() =>{
     try{
       await  dbConnect()
     }catch(err){
-    console.error(err);
+    console.error(err,"users");
     }
-console.log(process.env.JWT_access_Key,'jwt');
-console.log(process.env.JWT_Refresh__Key,'jwt');
 // registerConsumer("REGISTER");
 // loginCosumer('LOGIN');
  app.listen(3000,()=>{

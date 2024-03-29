@@ -13,6 +13,7 @@ import { ErrorComponent } from "../../ErrorComponents/ErrorComponent";
 import { useState } from "react";
 import { UseSomthingWentWrong } from "../../../utils/toastify/toasty";
 import mixpanel from "mixpanel-browser";
+import { useNavigateReplace } from "../../../utils/customHooks/hook";
 const curreDate = new Date();
 
 const TutorRegister = () => {
@@ -116,7 +117,7 @@ const TutorRegister = () => {
                     />
                   </form>
                   <p className="mt-6 text-xs text-center text-gray-600">
-                    <Link to={"login"}>
+                    <Link replace={true} to={"login"}>
                       <span>
                         Allready have an account{" "}
                         <span className="underline text-green-500">Login</span>

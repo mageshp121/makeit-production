@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginFn } from "../../../utils/api/methods/post";
 import {
   useValidate,
@@ -7,8 +7,8 @@ import {
 import FormEror from "../../ErrorComponents/FormEror";
 import { useState } from "react";
 import { ErrorComponent } from "../../ErrorComponents/ErrorComponent";
-import { UseSomthingWentWrong } from "../../../utils/toastify/toasty";
-import { useGoogleSignIn } from "../../../utils/customHooks/hook";
+import { UseAuth, UseSomthingWentWrong } from "../../../utils/toastify/toasty";
+import { useGoogleSignIn,  } from "../../../utils/customHooks/hook";
 import { authentication } from "../../../utils/config/firebase";
 import { Auth } from "firebase/auth";
 import { getUserByEmail } from "../../../utils/api/methods/get";
@@ -32,7 +32,7 @@ function TutorLogin() {
               dispatch(addUser(response.data.userWithoutPassword));
               dispatch(addtoken(response.data.accesToken))
               localStorage.setItem("Token",response.data.reFreshToken);
-              navigate("/tutor/profile");
+              navigate("/tutor/profile",{replace:true});
         }else{
             navigate("/auth/login")
         }
@@ -41,7 +41,6 @@ function TutorLogin() {
       UseSomthingWentWrong();
     }
   };
-
   // google sign in handling funcation
   const googleSignInTutor = async (auth: Auth) => {
     try {
@@ -57,12 +56,14 @@ function TutorLogin() {
               dispatch(addUser(res.data.userObject));
               dispatch(addtoken(res.data.accesToken))
               localStorage.setItem("Token",res.data.reFreshToken);
-              // localStorage.removeItem("Token")
-              navigate('/tutor/profile');
+              // localStorage.removeItem("Token");
+              console.log("workin everything fine");
+              navigate('/',{replace:true});
             }else{
-                navigate("/auth/login");
+              UseAuth("This account is not associated with a tutor so...! Please login as a user")
             } 
           }else if(res.response.status === 404){
+            console.log(res.response,"");
             setErrorMessage(res.response.data.errors[0].message);
           }
         } catch (error) {
@@ -70,7 +71,6 @@ function TutorLogin() {
         }
       }
     } catch (error) {
-      console.log(error,'iiijiiijij');
       UseSomthingWentWrong();
     }
   };
@@ -93,7 +93,7 @@ function TutorLogin() {
           </div>
           <div className=" lg:w-1/2 xl:w-5/12 p-14 ">
             <div className="flex flex-col items-center mt-4">
-              <h3 className="text-xl font-medium pb-8 xl:text-3xl">Sign </h3>
+              <h3 className="text-xl font-medium pb-8 xl:text-3xl">Sign in </h3>
               <div className="flex-1 w-full ">
                 <div className="flex flex-col items-center">
                   <button
@@ -123,10 +123,9 @@ function TutorLogin() {
                     <span className="ml-4">Sign in with Google</span>
                   </button>
                 </div>
-
-                <div className="my-10 text-center pb-3 border-b">
-                  <div className="inline-block  text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 ">
-                    Or sign in with e-mail
+                <div className=" text-center pb-3 ">
+                  <div className="inline-block  text-sm font-medium  tracking-wide text-gray-600 transform translate-y-1/2 ">
+                   <p className="text-lg">or</p>
                   </div>
                 </div>
                 <div className="max-w-xs mx-auto">
@@ -137,7 +136,6 @@ function TutorLogin() {
                       placeholder="Email"
                       {...register("email")}
                     />
-
                     <input
                       className="w-full px-6 py-4 mt-5 text-sm font-medium placeholder-gray-500  bg-neutral-200  border border-gray-200 rounded-lg focus:border-gray-400 focus:bg-white custom-outline-none"
                       type="password"
@@ -150,12 +148,18 @@ function TutorLogin() {
                     />
                   </form>
                   <p className="mt-6 text-xs text-center text-gray-600">
-                    <Link to={"/tutor"}>
+                    <Link to={"/tutor"} replace={true} >
                       <span>
                         No Account{" "}
                         <span className="underline text-green-500">
                           Register
                         </span>
+                      </span>
+                    </Link>
+                    <span className="ml-2 text-lg">or</span>
+                    <Link replace={true} to={"/auth/login"}>
+                      <span className="ml-2 underline text-green-500">
+                        Login as a User
                       </span>
                     </Link>
                   </p>

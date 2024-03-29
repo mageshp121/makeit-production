@@ -13,7 +13,7 @@ const start = async () => {
     process.on('SIGTERM', () => natsWrapper.client.close());
     await dbConnect();
   } catch (err) {
-    console.error(err);
+    console.error(err,"errr");
   }
   app.listen(4000, () => {
     console.log("server started at 4000");

@@ -14,7 +14,6 @@ import env from "dotenv";
 env.config();
 
 const app = express();
-const router = express.Router();
 app.use(express.json({ limit: "1000mb" }));
 app.use(
   express.urlencoded({ limit: "1000mb", extended: true, parameterLimit: 50000 })

@@ -19,14 +19,11 @@ function Navbottom(props:any) {
           </h1>
           <br />
           <h2 className="text-2xl  text-white">{subTitle}</h2>
+        
           <br />
-          {Title != 'Authentication' && (
-          <div className='text-center'>
-        </div>
-      )}
-          
+          <Link to={"/"}><p className='  text-lg text-white underline underline-offset-2'>Home</p></Link>
       </div>
-      
+ 
       </div>
       
       <div className='  ml-48  flex flex-col justify-end px-24 py-14    flex-auto h-60' >

@@ -240,3 +240,12 @@ export const useLogout = () => {
   };
   return SignOUt;
 };
+
+
+
+export const useNavigateReplace=(curentPath:any)=>{
+  console.log();
+  
+     const navigate = useNavigate();
+     
+}

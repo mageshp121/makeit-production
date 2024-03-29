@@ -18,7 +18,7 @@ function TutorOtp() {
   const userdata:any = useSelector((store:any)=>{
     return store.user.userData
    })
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const isMountedRef = useRef(false);
   const phoneNumber = userdata.phone
   const number =  "+91" +phoneNumber.toString() 
@@ -69,7 +69,7 @@ function TutorOtp() {
       await useVerifyOtp(data)
         .then((response) => {
           console.log(response, "response");
-          if (response.sucess) Navigate("/tutor/profile");
+          if (response.sucess) navigate("/tutor/profile",{replace:true});
         })
         .catch((err) => {
           console.log("err cathced ", err);
